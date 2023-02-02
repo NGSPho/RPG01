@@ -1,12 +1,12 @@
 // textbox param
-textbox_width = 200;
-textbox_height = 64;
+textbox_width = 581;
+textbox_height = 149;
 textbox_x = 0;
 textbox_y = 0;
 border = 8;
 line_sep = 12;
 line_width = textbox_width - border * 2; // use for line break
-txtb_spr = SPR_TEXT_BOX
+txtb_spr[0] = SPR_TEXT_BOX // todo it's not needed to inti here
 txtb_img = 0;
 txtb_img_spd = 6/60;
 

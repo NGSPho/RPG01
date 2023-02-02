@@ -1,8 +1,8 @@
 depth = -9999
 
-accept_key = keyboard_check_pressed(vk_space) ||keyboard_check_pressed(vk_enter)
+accept_key = keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter)
 textbox_x = camera_get_view_x(view_camera[0]);
-textbox_y = camera_get_view_y(view_camera[0]) + 144;
+textbox_y = camera_get_view_y(view_camera[0]) + 433;
 
 // setup
 if setup == false {
@@ -15,8 +15,19 @@ if setup == false {
 		// store HOW MANY CHARS ARE ON EACH PAGE
 		text_length[p] = string_length(text[p]);
 		// get x pos for the offset
-			// no char ( center the textbox)
-			text_x_offset[p] = 44; // todo why the fuck is it here
+		
+			// character on the left
+			text_x_offset[p] = 240;
+			portrait_x_offset[p] = 48;
+			// character on the right
+			if speaker_side[p] == 1 {
+				portrait_x_offset[p] = 672;
+			}
+			// no character center textb
+			if speaker_sprite[p] == noone { 
+				text_x_offset[p] = 144;
+			}
+			
 		// settings indifividual characters and finding where the lines of text should break
 		for (var c = 0; c < text_length[p]; c++) {
 			var _char_pos = c + 1; // sring index starts with 1..
@@ -65,7 +76,7 @@ if setup == false {
 			
 		}	
 	}
-	setup = true
+	setup = true // TODO remove ?
 }
 
 
@@ -107,10 +118,27 @@ if accept_key
 var _txtb_x = textbox_x + text_x_offset[page];
 var _txtb_y = textbox_y;
 txtb_img += txtb_img_spd;
-txtb_spr_w = sprite_get_width(txtb_spr)
-txtb_spr_h = sprite_get_height(txtb_spr)
+txtb_spr_w = sprite_get_width(txtb_spr[page])
+txtb_spr_h = sprite_get_height(txtb_spr[page])
 
-draw_sprite_ext(txtb_spr, txtb_img, _txtb_x,  _txtb_y, textbox_width/txtb_spr_w, textbox_height/txtb_spr_h, 0, c_white, 1)
+// draw the speaker 
+if speaker_sprite[page] != noone {
+		print_log("page = ", page)
+		print_log("speakers sprites = ", speaker_sprite)
+		sprite_index = speaker_sprite[page];
+		print_log("Sprite index : ", sprite_index, " offsets _x portrait = ", portrait_x_offset)
+		var _speaker_x = textbox_x + portrait_x_offset[page];
+		print_log("textbox_x : ", textbox_x)
+		print_log("Speaker x : ", _speaker_x, " Speaker side : ", speaker_side[page])
+		if speaker_side[page] == -1 { _speaker_x += sprite_width * global.scale_portrait }
+		
+		// draw the speaker
+		print_log(" speaker_x : ", _speaker_x, "sprite width  ", sprite_width)
+		draw_sprite_ext(txtb_spr[page], txtb_img, textbox_x + portrait_x_offset[page], textbox_y, sprite_width/txtb_spr_w * global.scale_portrait, sprite_height/txtb_spr_h * global.scale_portrait, 0, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, _speaker_x, textbox_y, speaker_side[page] * global.scale_portrait, global.scale_portrait, 0, c_white, 1);
+}
+
+draw_sprite_ext(txtb_spr[page], -1, _txtb_x,  _txtb_y, textbox_width/txtb_spr_w, textbox_height/txtb_spr_h, 0, c_white, 1)
 
 
 
@@ -125,8 +153,9 @@ if draw_char == text_length[page] && page == page_number - 1 {
 	var _op_bord = 8;
 	for (var op = 0; op < option_number ; op++) {
 		// the option box
+		
 		var _o_w = string_width(option[op]) + _op_bord*2
-		draw_sprite_ext(txtb_spr, txtb_img, _txtb_x + 16, _txtb_y - _op_space * option_number + _op_space * op, _o_w/txtb_spr_w, (_op_space-1)/txtb_spr_h, 0, c_white, 1)
+		draw_sprite_ext(txtb_spr[page], txtb_img, _txtb_x + 16, _txtb_y - _op_space * option_number + _op_space * op, _o_w/txtb_spr_w, (_op_space-1)/txtb_spr_h, 0, c_white, 1)
 		
 		// the arrow
 		if option_pos == op

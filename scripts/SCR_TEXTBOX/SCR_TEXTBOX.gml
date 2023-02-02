@@ -2,11 +2,42 @@ function scr_set_default_for_text() {
 	line_break_pos[0, page_number] = 0;
 	line_break_num[page_number] = 0;
 	line_break_offset[page_number] = 0;
+	
+	txtb_spr[page_number] = SPR_TEXT_BOX // default
+	speaker_sprite[page_number] = noone;
+	speaker_side[page_number] = -1;
 }
+
 /// @param text
+/// @param[character]
 function scr_text(_text ) {
 	scr_set_default_for_text() // TODO why ??
 	text[page_number] = _text;
+	
+	// get character info
+	if argument_count > 1 {
+		switch(argument[1]) {
+			case "player": 
+				speaker_sprite[page_number] = OBJ_PLAYER.sprite_index
+				txtb_spr[page_number] = SPR_TEXT_BOX;
+				break;
+			case "slime 1":
+				speaker_sprite[page_number] = SPR_CHAR_SLIME_01_PORTRAIT_NEUTRAL
+				txtb_spr[page_number] = SPR_TEXT_BOX;
+				txtb_spr[page_number] = SPR_TEXT_BOX;
+				break;
+			case "denea":
+				speaker_sprite[page_number] = SPR_CHAR_DENEA_PORTRAIT_NEUTRAL
+				txtb_spr[page_number] = SPR_TEXT_BOX;
+				break;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	page_number++;
 	
 }

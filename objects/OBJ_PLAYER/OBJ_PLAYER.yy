@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "OBJ_PLAYER",
   "spriteId": {
-    "name": "SPR_CHAR_SLIME_DOWN",
-    "path": "sprites/SPR_CHAR_SLIME_DOWN/SPR_CHAR_SLIME_DOWN.yy",
+    "name": "SPR_CHAR_SLIME_00_DOWN",
+    "path": "sprites/SPR_CHAR_SLIME_00_DOWN/SPR_CHAR_SLIME_00_DOWN.yy",
   },
   "solid": false,
   "visible": true,

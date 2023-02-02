@@ -1,5 +1,3 @@
-// script that runs at the start of the fame
-gml_pragma("global","initialize_global_variables()")
 
 
 function initialize_global_variables() {
@@ -13,4 +11,7 @@ function initialize_global_variables() {
 	];
 	global.start_room = ROOM_BEDROOM;
 	global.current_bgm = 0;
+	global.font_menu = font_add_sprite(SPR_FONT_L, 32, true, 1);
+	global.font_textb = font_add_sprite(SPR_FONT_S, 32, true, 1);
+	global.scale_portrait = 3;
 }

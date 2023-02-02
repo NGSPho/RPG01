@@ -2,10 +2,10 @@ x_spd = 0;
 y_spd = 0;
 move_spd = 1;
 
-sprite[0] = SPR_CHAR_SLIME_RIGHT;
-sprite[1] = SPR_CHAR_SLIME_UP;
-sprite[2] = SPR_CHAR_SLIME_LEFT;
-sprite[3] = SPR_CHAR_SLIME_DOWN;
+sprite[0] = SPR_CHAR_SLIME_00_RIGHT;
+sprite[1] = SPR_CHAR_SLIME_00_UP;
+sprite[2] = SPR_CHAR_SLIME_00_LEFT;
+sprite[3] = SPR_CHAR_SLIME_00_DOWN;
 
 face = DOWN;
 
