@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "SPR_CHAR_DENEA_PORTRAIT_NEUTRAL",
+  "name": "SPR_CHAR_PORTRAIT_DENEA_NEUTRAL",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -33,7 +33,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "SPR_CHAR_DENEA_PORTRAIT_NEUTRAL",
+    "name": "SPR_CHAR_PORTRAIT_DENEA_NEUTRAL",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 5.0,
@@ -45,7 +45,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"d71fe444-6ed0-4201-a4a1-018a1a34d2fb","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"09726e37-c831-4c2f-ab9a-7a5622d8cf4c","path":"sprites/SPR_CHAR_DENEA_PORTRAIT_NEUTRAL/SPR_CHAR_DENEA_PORTRAIT_NEUTRAL.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"5e32f51b-4aea-4505-9f5e-47ca9af8d496","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"09726e37-c831-4c2f-ab9a-7a5622d8cf4c","path":"sprites/SPR_CHAR_PORTRAIT_DENEA_NEUTRAL/SPR_CHAR_PORTRAIT_DENEA_NEUTRAL.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,

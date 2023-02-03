@@ -12,12 +12,18 @@ else if !player_in_bbox
 else if was_player_outside == true
 {
 	// if player has been outside and collides with the block, warping is possible
-	warp_player()
+	warp_player();
 }
 
 
+// DEBUG
+if mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, OBJ_X_WARP_BLOCK)
+{
+	debug("GO TO NEXT ROOM DEBUG");
+	room_goto(ROOM_BEDROOM);
+}
 
-var function warp_player()
+function warp_player()
 {
 	var inst = instance_create_depth(0, 0, -1000, OBJ_X_WARP) // TODO get limit Integer
 	inst.target_x = target_x; 

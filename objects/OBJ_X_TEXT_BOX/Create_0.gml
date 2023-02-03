@@ -38,5 +38,7 @@ setup = false;
 
 // effects
 scr_set_default_for_text();
-last_free_spaece = 0;
+last_free_space = 0;
+text_pause_timer = 0;
+text_pause_time = 16;
 

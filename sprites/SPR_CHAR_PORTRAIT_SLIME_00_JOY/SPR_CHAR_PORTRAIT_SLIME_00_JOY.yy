@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "SPR_CHAR_SLIME_01_PORTRAIT_SHY",
+  "name": "SPR_CHAR_PORTRAIT_SLIME_00_JOY",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -29,12 +29,12 @@
   "gridY": 0,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f5b0308e-77ad-4452-b8b4-ff45e1bb0b63",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c7b7c501-c361-4e69-ba56-b528618087e5",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7a5bbc6e-a9f5-44dd-8466-ff69f55d0f17",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "SPR_CHAR_SLIME_01_PORTRAIT_SHY",
+    "name": "SPR_CHAR_PORTRAIT_SLIME_00_JOY",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 4.0,
@@ -46,8 +46,8 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"626909db-ec54-4343-b8a6-fcbf3effdf23","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f5b0308e-77ad-4452-b8b4-ff45e1bb0b63","path":"sprites/SPR_CHAR_SLIME_01_PORTRAIT_SHY/SPR_CHAR_SLIME_01_PORTRAIT_SHY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"d68e90d8-c2a5-4f17-b68e-3733bc74c0bf","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c7b7c501-c361-4e69-ba56-b528618087e5","path":"sprites/SPR_CHAR_SLIME_01_PORTRAIT_SHY/SPR_CHAR_SLIME_01_PORTRAIT_SHY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"0392ac56-51c5-4a00-bede-fc893299a287","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f5b0308e-77ad-4452-b8b4-ff45e1bb0b63","path":"sprites/SPR_CHAR_PORTRAIT_SLIME_00_JOY/SPR_CHAR_PORTRAIT_SLIME_00_JOY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"3b01b807-fa88-4fe0-ab44-a43a4ded0baa","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7a5bbc6e-a9f5-44dd-8466-ff69f55d0f17","path":"sprites/SPR_CHAR_PORTRAIT_SLIME_00_JOY/SPR_CHAR_PORTRAIT_SLIME_00_JOY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,

@@ -10,7 +10,7 @@ if setup == false {
 	draw_set_font(global.font_textb);
 	draw_set_valign(fa_top);
 	draw_set_halign(fa_left);
-	print_log("Page number : ", page_number)
+	log("Page number : ", page_number)
 	for(var p = 0 ; p < page_number ; p++ ) {
 		// store HOW MANY CHARS ARE ON EACH PAGE
 		text_length[p] = string_length(text[p]);
@@ -22,6 +22,7 @@ if setup == false {
 			// character on the right
 			if speaker_side[p] == 1 {
 				portrait_x_offset[p] = 672;
+				text_x_offset[p] = 48;
 			}
 			// no character center textb
 			if speaker_sprite[p] == noone { 
@@ -48,7 +49,7 @@ if setup == false {
 				line_break_num[p]++;
 				var _txt_up_to_last_space = string_copy(text[p], 1, last_free_space);
 				var _last_free_space_string = string_char_at(text[p], last_free_space);
-				line_break_offset[p] = string_width(_txt_up_to_last_space - string_width(_last_free_space_string))
+				line_break_offset[p] = string_width(_txt_up_to_last_space) - string_width(_last_free_space_string)
 			}
 		}
 		//getting each char coordinates
@@ -63,7 +64,7 @@ if setup == false {
 			 //compensate for string breaks
 			 for (var lb = 0; lb < line_break_num[p]; lb++) {
 				 // if current looping char is after a line break
-				 if char_pos >= line_break_pos[lb, p] {
+				 if _char_pos >= line_break_pos[lb, p] {
 					 var _str_copy = string_copy(text[p], line_break_pos[lb, p], _char_pos-line_break_pos[lb,p]);
 					 _current_txt_w = string_width(_str_copy)
 					// record the line this character should be on
@@ -81,9 +82,18 @@ if setup == false {
 
 
 // typing the text
-if draw_char < text_length[page] {
-	draw_char += text_spd
-	draw_char = clamp(draw_char, 0, text_length[page]);
+if text_pause_timer <= 0 {
+	
+	if draw_char < text_length[page] {
+		draw_char += text_spd
+		draw_char = clamp(draw_char, 0, text_length[page]);
+		var _check_char = string_char_at(text[page], draw_char);
+		if _check_char == "." {
+			text_pause_timer = text_pause_time;
+		}
+	}
+} else {
+	text_pause_timer--;
 }
 
 
@@ -123,17 +133,17 @@ txtb_spr_h = sprite_get_height(txtb_spr[page])
 
 // draw the speaker 
 if speaker_sprite[page] != noone {
-		print_log("page = ", page)
-		print_log("speakers sprites = ", speaker_sprite)
+		//log("page = ", page)
+		//log("speakers sprites = ", speaker_sprite)
 		sprite_index = speaker_sprite[page];
-		print_log("Sprite index : ", sprite_index, " offsets _x portrait = ", portrait_x_offset)
+		//log("Sprite index : ", sprite_index, " offsets _x portrait = ", portrait_x_offset)
 		var _speaker_x = textbox_x + portrait_x_offset[page];
-		print_log("textbox_x : ", textbox_x)
-		print_log("Speaker x : ", _speaker_x, " Speaker side : ", speaker_side[page])
+		//log("textbox_x : ", textbox_x)
+		//log("Speaker x : ", _speaker_x, " Speaker side : ", speaker_side[page])
 		if speaker_side[page] == -1 { _speaker_x += sprite_width * global.scale_portrait }
 		
 		// draw the speaker
-		print_log(" speaker_x : ", _speaker_x, "sprite width  ", sprite_width)
+		//log(" speaker_x : ", _speaker_x, "sprite width  ", sprite_width)
 		draw_sprite_ext(txtb_spr[page], txtb_img, textbox_x + portrait_x_offset[page], textbox_y, sprite_width/txtb_spr_w * global.scale_portrait, sprite_height/txtb_spr_h * global.scale_portrait, 0, c_white, 1);
 		draw_sprite_ext(sprite_index, image_index, _speaker_x, textbox_y, speaker_side[page] * global.scale_portrait, global.scale_portrait, 0, c_white, 1);
 }

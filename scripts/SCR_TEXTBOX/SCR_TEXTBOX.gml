@@ -4,35 +4,51 @@ function scr_set_default_for_text() {
 	line_break_offset[page_number] = 0;
 	
 	txtb_spr[page_number] = SPR_TEXT_BOX // default
-	speaker_sprite[page_number] = noone;
-	speaker_side[page_number] = -1;
+	speaker_sprite[page_number] = noone; // can be noone
+	speaker_side[page_number] = 1;
 }
 
 /// @param text
-/// @param[character]
-function scr_text(_text ) {
+/// @param[character/sprite]
+/// @param [side]
+function scr_text(_text) {
 	scr_set_default_for_text() // TODO why ??
 	text[page_number] = _text;
 	
 	// get character info
 	if argument_count > 1 {
 		switch(argument[1]) {
-			case "player": 
-				speaker_sprite[page_number] = OBJ_PLAYER.sprite_index
-				txtb_spr[page_number] = SPR_TEXT_BOX;
+			case "slime0": 
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL;
 				break;
-			case "slime 1":
-				speaker_sprite[page_number] = SPR_CHAR_SLIME_01_PORTRAIT_NEUTRAL
-				txtb_spr[page_number] = SPR_TEXT_BOX;
-				txtb_spr[page_number] = SPR_TEXT_BOX;
+			case "slime0 angry": 
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_00_ANGRY;
+				break;
+			case "slime0 joy": 
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_00_JOY;
+				break;
+			case "slime1":
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_NEUTRAL;
+				break;
+			case "slime1 shy":
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_SHY;
+				break;
+			case "slime1 cry":
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_CRY;
 				break;
 			case "denea":
-				speaker_sprite[page_number] = SPR_CHAR_DENEA_PORTRAIT_NEUTRAL
-				txtb_spr[page_number] = SPR_TEXT_BOX;
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DENEA_NEUTRAL
+				break;
+				break;
+			case "dancer":
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DANCER_NEUTRAL
 				break;
 		}
 	}
 	
+	if argument_count > 2 {
+		speaker_side[page_number] = argument[2]
+	}
 	
 	
 	

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "SPR_CHAR_SLIME_00_PORTRAIT_ANGRY",
+  "name": "SPR_CHAR_PORTRAIT_SLIME_01_SHY",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -28,16 +28,16 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"5a5454ae-e498-4488-9ff3-14b6f6c9e47a",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"765e86d9-8333-418d-94a2-827f6219fa52",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f5b0308e-77ad-4452-b8b4-ff45e1bb0b63",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c7b7c501-c361-4e69-ba56-b528618087e5",},
   ],
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "SPR_CHAR_SLIME_00_PORTRAIT_ANGRY",
+    "name": "SPR_CHAR_PORTRAIT_SLIME_01_SHY",
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 2.0,
+    "playbackSpeed": 4.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
@@ -46,8 +46,8 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"674b80c6-e7a1-40b5-9a26-74dffd29be46","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"5a5454ae-e498-4488-9ff3-14b6f6c9e47a","path":"sprites/SPR_CHAR_SLIME_00_PORTRAIT_ANGRY/SPR_CHAR_SLIME_00_PORTRAIT_ANGRY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"bbe46e05-4f53-4b7b-b51d-974b7908f317","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"765e86d9-8333-418d-94a2-827f6219fa52","path":"sprites/SPR_CHAR_SLIME_00_PORTRAIT_ANGRY/SPR_CHAR_SLIME_00_PORTRAIT_ANGRY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"626909db-ec54-4343-b8a6-fcbf3effdf23","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f5b0308e-77ad-4452-b8b4-ff45e1bb0b63","path":"sprites/SPR_CHAR_PORTRAIT_SLIME_01_SHY/SPR_CHAR_PORTRAIT_SLIME_01_SHY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d68e90d8-c2a5-4f17-b68e-3733bc74c0bf","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c7b7c501-c361-4e69-ba56-b528618087e5","path":"sprites/SPR_CHAR_PORTRAIT_SLIME_01_SHY/SPR_CHAR_PORTRAIT_SLIME_01_SHY.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,

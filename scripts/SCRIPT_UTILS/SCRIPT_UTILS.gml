@@ -17,7 +17,7 @@ function get_max_width_from_string_array(tab)
 
 
 // print(variables or strings)
-function print_log() 
+function log() 
 {
 	var output_string = "";
 	var str = "";
@@ -28,7 +28,21 @@ function print_log()
 	    output_string += str + " ";
 	}
 
-	show_debug_message(output_string);
+	show_debug_message("LOG : " + output_string);
+}
+
+function debug() 
+{
+	var output_string = "";
+	var str = "";
+	for (var i = 0; i < argument_count; i++) 
+	{
+	    str = argument[i];
+	    if (!is_string(str)) str = string(str);
+	    output_string += str + " ";
+	}
+
+	show_debug_message("LOG : " + output_string);
 }
 
 
@@ -36,7 +50,7 @@ function print_log()
 function instance_get_or_null(obj, i, name)
 {
 	instance_nb = instance_number(obj)
-	print_log(instance_nb, " instances of ", name, " found.")
+	log(instance_nb, " instances of ", name, " found.")
 	if instance_nb > i
 	{
 		return instance_find(OBJ_SOUNDTRACK_ABSTRACT, i)

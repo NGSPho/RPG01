@@ -1,1 +1,7 @@
 Add changelog-manager
+add font charactere speciaux
+need new format for importing text and param
+
+cleanup push (.gitignore ? )
+
+fix le textbox avec des room de taille differente/viewport différent ?
