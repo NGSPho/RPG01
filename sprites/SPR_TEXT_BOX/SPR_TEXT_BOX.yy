@@ -107,7 +107,7 @@
     "resourceType": "GMNineSliceData",
   },
   "parent": {
-    "name": "Dialogue Systems",
-    "path": "folders/Dialogue Systems.yy",
+    "name": "Dialogue System",
+    "path": "folders/Sprites/Dialogue System.yy",
   },
 }

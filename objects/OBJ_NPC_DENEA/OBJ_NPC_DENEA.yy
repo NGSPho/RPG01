@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "OBJ_NPC_DENEA",
   "spriteId": {
-    "name": "SPR_CHAR_DENEA_DOWN",
-    "path": "sprites/SPR_CHAR_DENEA_DOWN/SPR_CHAR_DENEA_DOWN.yy",
+    "name": "SPR_CHAR_BODY_DENEA_DOWN",
+    "path": "sprites/SPR_CHAR_BODY_DENEA_DOWN/SPR_CHAR_BODY_DENEA_DOWN.yy",
   },
   "solid": false,
   "visible": true,
@@ -12,8 +12,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "OBJ_CHARACTER_ABSTRACT",
-    "path": "objects/OBJ_CHARACTER_ABSTRACT/OBJ_CHARACTER_ABSTRACT.yy",
+    "name": "OBJ_NPC_ABSTRACT",
+    "path": "objects/OBJ_NPC_ABSTRACT/OBJ_NPC_ABSTRACT.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,

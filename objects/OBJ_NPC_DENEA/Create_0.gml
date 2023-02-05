@@ -1,5 +1,12 @@
-sprite[0] = SPR_CHAR_DENEA_RIGHT;
-sprite[1] = SPR_CHAR_DENEA_UP;
-sprite[2] = SPR_CHAR_DENEA_LEFT;
-sprite[3] = SPR_CHAR_DENEA_DOWN;
-image_speed = 0;
+/// @description Insert description here
+// You can write your code in this editor
+
+
+
+
+
+// Inherit the parent event
+event_inherited();
+
+
+OBJ_NPC_DENEA.sprite = ds_map_find_value(global.spr_name_to_sprites, "DENEA")

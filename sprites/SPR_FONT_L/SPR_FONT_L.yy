@@ -256,7 +256,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Menu_Sytem",
-    "path": "folders/Menu_Sytem.yy",
+    "name": "Dialogue System",
+    "path": "folders/Sprites/Dialogue System.yy",
   },
 }

@@ -17,7 +17,7 @@
   "soundFile": "SOUNDTRACK_MENU.mp3",
   "duration": 76.95673,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "BGM",
+    "path": "folders/Sounds/BGM.yy",
   },
 }

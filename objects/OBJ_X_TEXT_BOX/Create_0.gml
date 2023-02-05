@@ -1,6 +1,6 @@
 // textbox param
-textbox_width = 581;
-textbox_height = 149;
+textbox_width = 180;
+textbox_height = 53;
 textbox_x = 0;
 textbox_y = 0;
 border = 8;
@@ -35,7 +35,9 @@ option_pos = 0;
 option_number = 0;
 
 setup = false;
-
+// sound
+snd_delay = 4;
+snd_count = snd_delay;
 // effects
 scr_set_default_for_text();
 last_free_space = 0;

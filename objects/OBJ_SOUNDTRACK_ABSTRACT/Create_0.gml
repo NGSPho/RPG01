@@ -12,6 +12,5 @@ if previous_bgm_inst != 0 // if sound already playing, we play a new one if it's
 	audio_play_sound(audio, 1000, true);
 }
 global.current_bgm = audio
-global.current_bgm_id = audio.id
 
 // TODO Save in global script room to sound map	

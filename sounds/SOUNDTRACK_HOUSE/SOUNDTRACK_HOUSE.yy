@@ -17,7 +17,7 @@
   "soundFile": "SOUNDTRACK_HOUSE.mp3",
   "duration": 93.02204,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "BGM",
+    "path": "folders/Sounds/BGM.yy",
   },
 }

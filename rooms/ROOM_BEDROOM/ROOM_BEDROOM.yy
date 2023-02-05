@@ -17,10 +17,9 @@
   ],
   "layers": [
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Agents","instances":[
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_36D52057","properties":[],"isDnd":false,"objectId":{"name":"OBJ_NPC_DENEA","path":"objects/OBJ_NPC_DENEA/OBJ_NPC_DENEA.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":0.6666667,"scaleY":0.6666667,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":208.0,"y":160.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_63394984","properties":[],"isDnd":false,"objectId":{"name":"OBJ_X_SPEAK_BLOCK","path":"objects/OBJ_X_SPEAK_BLOCK/OBJ_X_SPEAK_BLOCK.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":125.0,"y":212.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_59208844","properties":[],"isDnd":false,"objectId":{"name":"OBJ_X_SPEAK_BLOCK","path":"objects/OBJ_X_SPEAK_BLOCK/OBJ_X_SPEAK_BLOCK.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":2.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":157.0,"y":196.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_17F0E316","properties":[],"isDnd":false,"objectId":{"name":"OBJ_X_SPEAK_BLOCK","path":"objects/OBJ_X_SPEAK_BLOCK/OBJ_X_SPEAK_BLOCK.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":2.0,"scaleY":3.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":191.0,"y":190.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_71334E01","properties":[],"isDnd":false,"objectId":{"name":"OBJ_NPC_DANCER","path":"objects/OBJ_NPC_DANCER/OBJ_NPC_DANCER.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":0.41032988,"scaleY":0.33333334,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":208.84946,"y":163.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_678ED44F","properties":[],"isDnd":false,"objectId":{"name":"OBJ_NPC_SLIME01","path":"objects/OBJ_NPC_SLIME01/OBJ_NPC_SLIME01.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":224.0,"y":192.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1F08DF60","properties":[],"isDnd":false,"objectId":{"name":"OBJ_NPC_DENEA","path":"objects/OBJ_NPC_DENEA/OBJ_NPC_DENEA.yy",},"inheritCode":false,"hasCreationCode":true,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":128.0,"y":224.0,},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Items","instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_5C02B8E","properties":[],"isDnd":false,"objectId":{"name":"OBJ_ITEM_BOOKSHELVES","path":"objects/OBJ_ITEM_BOOKSHELVES/OBJ_ITEM_BOOKSHELVES.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":96.0,"y":128.0,},
@@ -68,10 +67,9 @@
     {"name":"inst_326AB622","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
     {"name":"inst_5FF30E91","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
     {"name":"inst_73438E29","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
-    {"name":"inst_36D52057","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
-    {"name":"inst_63394984","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
-    {"name":"inst_59208844","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
-    {"name":"inst_17F0E316","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
+    {"name":"inst_71334E01","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
+    {"name":"inst_678ED44F","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
+    {"name":"inst_1F08DF60","path":"rooms/ROOM_BEDROOM/ROOM_BEDROOM.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

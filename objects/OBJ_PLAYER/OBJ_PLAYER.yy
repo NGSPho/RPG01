@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "OBJ_PLAYER",
   "spriteId": {
-    "name": "SPR_CHAR_SLIME_00_DOWN",
-    "path": "sprites/SPR_CHAR_SLIME_00_DOWN/SPR_CHAR_SLIME_00_DOWN.yy",
+    "name": "SPR_CHAR_BODY_SLIME_00_DOWN",
+    "path": "sprites/SPR_CHAR_BODY_SLIME_00_DOWN/SPR_CHAR_BODY_SLIME_00_DOWN.yy",
   },
   "solid": false,
   "visible": true,
@@ -30,7 +30,6 @@
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":70,"eventType":9,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],

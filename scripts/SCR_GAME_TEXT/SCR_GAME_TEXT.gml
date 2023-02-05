@@ -10,7 +10,11 @@ function scr_game_text(_text_id){
 			scr_text("I want to die.", "denea", -1)
 			break;
 			
-		case "npc 2": scr_text("Bonjour mon chou.  Prêt à la vivre la Macarina du sièle ? Je plaisante. Hi, Hi!", "dancer", -1); break;
+		case "npc 2":
+			scr_text("Hey darling.  Pret a vivre la Macarena du siecle ? Je plaisante. Hi, Hi!", "dancer", -1); 
+			scr_text("...");
+			scr_text("Oh la la, je rigole !", "dancer", -1); 
+			break;
 		
 		case "npc 3": 
 			scr_text("Bubu gak dubu ?", "slime1", -1); 

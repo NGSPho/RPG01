@@ -17,7 +17,7 @@
   "soundFile": "SOUNDTRACK_FOREST.mp3",
   "duration": 210.9649,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "BGM",
+    "path": "folders/Sounds/BGM.yy",
   },
 }

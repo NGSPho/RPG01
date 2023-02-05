@@ -25,7 +25,7 @@ if mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, OBJ
 
 function warp_player()
 {
-	var inst = instance_create_depth(0, 0, -1000, OBJ_X_WARP) // TODO get limit Integer
+	var inst = instance_create_depth(0, 0, -9999, OBJ_X_WARP) // TODO get limit Integer
 	inst.target_x = target_x; 
 	inst.target_y = target_y;
 	inst.target_room = target_room

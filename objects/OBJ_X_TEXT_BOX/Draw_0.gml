@@ -1,13 +1,12 @@
-depth = -9999
+depth = -100
 
 accept_key = keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter)
 textbox_x = camera_get_view_x(view_camera[0]);
-textbox_y = camera_get_view_y(view_camera[0]) + 433;
+textbox_y = camera_get_view_y(view_camera[0]) + 160;
 
 // setup
 if setup == false {
 	setup = true;
-	draw_set_font(global.font_textb);
 	draw_set_valign(fa_top);
 	draw_set_halign(fa_left);
 	log("Page number : ", page_number)
@@ -16,17 +15,19 @@ if setup == false {
 		text_length[p] = string_length(text[p]);
 		// get x pos for the offset
 		
-			// character on the left
-			text_x_offset[p] = 240;
-			portrait_x_offset[p] = 48;
-			// character on the right
-			if speaker_side[p] == 1 {
-				portrait_x_offset[p] = 672;
-				text_x_offset[p] = 48;
-			}
+			
 			// no character center textb
 			if speaker_sprite[p] == noone { 
-				text_x_offset[p] = 144;
+				text_x_offset[p] = 48;
+			} else {
+				// character on the left
+				text_x_offset[p] = 80;
+				portrait_x_offset[p] = 14;
+				// character on the right
+				if speaker_side[p] == 1 {
+					portrait_x_offset[p] = 208;
+					text_x_offset[p] = 16;
+				} 
 			}
 			
 		// settings indifividual characters and finding where the lines of text should break
@@ -88,8 +89,17 @@ if text_pause_timer <= 0 {
 		draw_char += text_spd
 		draw_char = clamp(draw_char, 0, text_length[page]);
 		var _check_char = string_char_at(text[page], draw_char);
-		if _check_char == "." {
+		if _check_char == "." || _check_char == "!" || _check_char == "?" {
 			text_pause_timer = text_pause_time;
+		} else {
+			// typing sound
+			if snd_count < snd_delay {
+				snd_count ++;
+			} else {
+				snd_cound = 0;
+				if !audio_is_playing(snd[page]) {
+				audio_play_sound(snd[page], 10, false);}
+			}
 		}
 	}
 } else {

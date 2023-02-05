@@ -1,0 +1,1 @@
+bg_sprite = SPR_BG_FOREST

@@ -31,7 +31,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Dialogue Systems",
-    "path": "folders/Dialogue Systems.yy",
+    "name": "Dialogue System",
+    "path": "folders/Objects/Dialogue System.yy",
   },
 }

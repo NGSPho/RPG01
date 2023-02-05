@@ -6,6 +6,7 @@ function scr_set_default_for_text() {
 	txtb_spr[page_number] = SPR_TEXT_BOX // default
 	speaker_sprite[page_number] = noone; // can be noone
 	speaker_side[page_number] = 1;
+	snd[page_number] = noone;
 }
 
 /// @param text
@@ -29,19 +30,24 @@ function scr_text(_text) {
 				break;
 			case "slime1":
 				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_NEUTRAL;
+				snd[page_number] = SOUND_EFFECT_CHAR_BUBBLES;
 				break;
 			case "slime1 shy":
 				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_SHY;
+				snd[page_number] = SOUND_EFFECT_CHAR_BUBBLES;
 				break;
 			case "slime1 cry":
 				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_SLIME_01_CRY;
+				snd[page_number] = SOUND_EFFECT_CHAR_BUBBLES;
 				break;
 			case "denea":
-				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DENEA_NEUTRAL
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DENEA_NEUTRAL;
+				snd[page_number] = SOUND_EFFECT_CHAR_PURR;
 				break;
 				break;
 			case "dancer":
-				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DANCER_NEUTRAL
+				speaker_sprite[page_number] = SPR_CHAR_PORTRAIT_DANCER_NEUTRAL;
+				snd[page_number] = SOUND_EFFECT_CHAR_LAUGH;
 				break;
 		}
 	}
@@ -69,7 +75,7 @@ function scr_option(_option, _link_id) {
 
 /// @param text_id
 function create_textbox(_text_id) {
-	with (instance_create_depth(0, 0, -9999, OBJ_X_TEXT_BOX)) {
+	with (instance_create_depth(0, 0, -100, OBJ_X_TEXT_BOX)) {
 		scr_game_text(_text_id)
 	}
 }

@@ -60,3 +60,15 @@ function instance_get_or_null(obj, i, name)
 		return 0;
 	}
 }
+
+function log_ds_map(ds_map) {
+	debug("OK")
+	var _key = ds_map_find_first(ds_map);
+	var _str = "{ ";
+	while !is_undefined(_key)  {
+		_str += _key + " : " + string(ds_map_find_value(ds_map, _key)) + ", "
+		_key = ds_map_find_next(ds_map, _key);
+	}
+	_str += " }";
+	return _str;
+}
