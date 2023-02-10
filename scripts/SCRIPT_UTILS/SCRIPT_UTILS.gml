@@ -46,23 +46,8 @@ function debug()
 }
 
 
-// get the ith instance of input class or else return null
-function instance_get_or_null(obj, i, name)
-{
-	instance_nb = instance_number(obj)
-	log(instance_nb, " instances of ", name, " found.")
-	if instance_nb > i
-	{
-		return instance_find(OBJ_SOUNDTRACK_ABSTRACT, i)
-	}
-	else 
-	{
-		return 0;
-	}
-}
 
 function log_ds_map(ds_map) {
-	debug("OK")
 	var _key = ds_map_find_first(ds_map);
 	var _str = "{ ";
 	while !is_undefined(_key)  {
@@ -70,5 +55,98 @@ function log_ds_map(ds_map) {
 		_key = ds_map_find_next(ds_map, _key);
 	}
 	_str += " }";
+	return _str;
+}
+
+// --------------------- Array utilitary functions ----------------------- //
+/// Check if array contains requested item
+///@param _arr the array on which to perform the search
+///@item the item to look for
+function array_contains(_arr, _item) {
+	for (var i=0; i<array_length(_arr); i++) {
+		if _arr[i] == _item return true;
+	}
+	return false;
+}
+
+/// Get the index of first object in array that matches filter, if none, return -1
+/// @_fighter Array of fighter
+/// @_index Starting index
+/// @_filter Is of the same structure as fighter_selection_filter 
+/// @_direction Is 1 or -1, gives the direction in the list
+/// @_loop Do we want to keep looping or not
+function find_next(_arr, _index, _filter, _direction, loop) { //TODO make filter and direction optional
+	
+	var _start_index = _index
+	do {
+		var _D = array_length(_arr)
+		_index = (_index + _D + _direction) % _D
+	} until (
+		apply_filter(_arr[_index], _filter) || _start_index == _index)
+	if _start_index == _index {
+		if loop == true return _index else return -1
+	} else {
+		return _index;
+	}
+}
+
+/// Get the index  first object in array that matches filter, if none, return -1
+/// @param _fighters Array of fighter
+/// @param _filter Is of the same structure as fighter_selection_filter 
+function find_first(_arr, _filter) {
+	var _result = find_next(_arr, -1, _filter, 1, false);
+	return _result;
+}
+
+/// Count the number of item in an array that matches filter
+///@param _figthers Array of fighters
+///@_filter The filter to apply
+function count_matches(_arr, _filter) {
+	var _index = find_first(_arr, _filter)
+	var _start = _index;
+	if _index == -1 return 0;
+	
+	var _count = 1;
+	do {
+		_count++;
+		item = find_next(_arr, _index, _filter, 1, false)
+	} until (_index == -1 || _index == _start)
+	return _count;
+}
+
+/// Check if obj matches all filter
+/// @param _inst
+/// @param _filter 
+function apply_filter(_inst, _filter) {
+	var result = true;
+	if _filter.KO != noone
+		result = result && _inst.HP <= 0 == _filter.KO;
+	return result;
+}
+// ---------------------- String utils -------------------------- //
+/// Create a string builder
+function string_builder_create() {
+	return [];
+}
+
+/// Append string to string builder
+/// @param _s_b The string builder
+/// @param _string The string to append
+function string_builder_append(_s_b, _string) {
+	_s_b[array_length(_s_b)] = _string
+	return _s_b
+}
+
+/// return noone is input string is empty
+function string_return_noone_if_empty(_str) {
+	if _str != "" 
+		return _str; 
+	else 
+		return noone;
+}
+
+function string_remove_quotation_marks(_str) {
+	if string_char_at(_str, 1) == "\"" && string_char_at(_str, string_length(_str)) == "\""
+		return string_copy(_str, 2, string_length(_str)-2)
 	return _str;
 }

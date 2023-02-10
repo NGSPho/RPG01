@@ -4,10 +4,7 @@
 function resume() 
 {
 
-	audio_stop_sound(SOUNDTRACK_MENU)
-	player = instance_get_or_null(OBJ_PLAYER, 0, "player")
-	if player == 0 { room_goto(global.start_room); return }
-	if global.current_bgm != 0 { audio_play_sound(global.current_bgm, 1000, true) }
+	if !instance_exists(OBJ_PLAYER) { room_goto(global.start_room); return }
 	OBJ_PLAYER.visible = true
 	room_goto(OBJ_PLAYER.current_room); 
 }
@@ -55,9 +52,5 @@ if accept_key
 		}
 	}
 }
-
-	
-if !window_has_focus() { audio_pause_sound(SOUNDTRACK_MENU) }
-else { audio_resume_sound(SOUNDTRACK_MENU) } // TODO move !!
 
 

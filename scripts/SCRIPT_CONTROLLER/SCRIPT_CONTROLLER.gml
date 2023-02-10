@@ -4,23 +4,11 @@ function initialize_global_variables() {
 	log("Initializing global variables");
 	global.start_room = ROOM_BEDROOM;
 	
-	global.current_bgm = 0;
-	
 	global.font_menu = font_add_sprite(SPR_FONT_L, 32, true, 1);
 	global.font_textb = font_add_sprite(SPR_FONT_S, 32, true, 1);
 	global.font_battle = font_add_sprite(SPR_FONT_S, 32, true, 1);
 	
 	global.scale_portrait = 1;
-	
-	
-
-	
-	// map strings to direction index
-	global.direction_to_index = ds_map_create();
-	ds_map_add(global.direction_to_index, "RIGHT", RIGHT);
-	ds_map_add(global.direction_to_index, "UP", UP);
-	ds_map_add(global.direction_to_index, "LEFT", LEFT);
-	ds_map_add(global.direction_to_index, "DOWN", DOWN);
 	
 	// map sprites names to sprites
 	global.spr_name_to_sprites = ds_map_create();
@@ -31,6 +19,21 @@ function initialize_global_variables() {
 	/*.battle_stats = ds_map_create()
 	populate_battle_data()
 	log("Battle map loaded");*/
+	
+	global.team = [OBJ_PLAYER, OBJ_NPC_DANCER, OBJ_NPC_DENEA]
+	
+	// Instanciate playable characters
+	
+	for (var i=0; i<array_length(global.team); i++) {
+		var _teammate = instance_create_depth(0, 0, 0, global.team[i])
+		with(_teammate) { visible = false }
+		log("Created teammate " + object_get_name(_teammate.object_index));
+	}
+		
+	global.map_text = load_text()
+	global.map_choice = load_choice()
+	
+	
 }
 
 
@@ -56,7 +59,7 @@ function populate_sprite_map() {
 		
 		// parsing name
 		if _prefix == string_copy(_spr_name, 0, string_length(_prefix)) {
-			log("Found sprite ", _spr_name);	
+			//log("Found sprite ", _spr_name);	
 			var _directions = [ "RIGHT", "UP", "LEFT", "DOWN" ];
 			var _file_name = noone;
 		
@@ -98,3 +101,6 @@ function populate_battle_data() {
 	}
 	ds_map_add(global.battle_stats, "main_character", main_character)
 }
+
+
+

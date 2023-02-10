@@ -5,7 +5,6 @@ left_key = keyboard_check(vk_left);
 up_key = keyboard_check(vk_up);
 down_key = keyboard_check(vk_down);
 
-
 x_spd = (right_key - left_key) * move_spd;
 y_spd = (down_key - up_key) * move_spd;
 
@@ -19,13 +18,10 @@ if instance_exists(OBJ_X_PAUSER)
 	// menu
 	if keyboard_check(vk_escape)
 	{
-		audio_stop_sound(global.current_bgm) // TODO should pause
 		room_goto(ROOM_TITLE_SCREEN);
 		visible = false;
 	}
 }
-if !window_has_focus() { audio_pause_sound(global.current_bgm) }
-else { audio_resume_sound(global.current_bgm) } // TODO move !!
 
 // set sprite
 

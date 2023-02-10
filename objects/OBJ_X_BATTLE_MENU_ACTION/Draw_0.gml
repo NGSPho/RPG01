@@ -22,8 +22,8 @@ draw_set_font(global.font_battle);
 
 // ------------------------- display character info ----------------------------//
 // HP / MAX_HP
-for (var i=0; i<array_length(OBJ_X_BATTLE.ally); i++) {
-	var _ally = OBJ_X_BATTLE.ally[i]
+for (var i=0; i<array_length(global.team); i++) {
+	var _ally = global.team[i]
 	var _text_x = _ally_menu_x + i * _ally_menu_width / 4 + 10; // divide by 4, ie the max number of allies (ref DQ8)
 	var _text_y = 3;
 	draw_text(_text_x, _text_y, _ally.label)
@@ -53,7 +53,7 @@ _scale_y = _action_menu_height/_battle_menu_spr_height
 draw_sprite_ext(_battle_spr, 0, _action_menu_x, _action_menu_y, _scale_x, _scale_y, 0, c_white, 1)
 
 //------- Display ally name -------//
-draw_text(_action_menu_x + 10, _action_menu_y + 5, ally[current_ally_turn_index].label)
+draw_text(_action_menu_x + 10, _action_menu_y + 5, global.team[current_ally_turn_index].label)
 draw_text(_action_menu_x + 10, _action_menu_y + 8, "______________________")
 
 //------- Display actions ---------//
@@ -75,5 +75,24 @@ for (var _pos_y=0; _pos_y<array_length(actions); _pos_y++;) {
 			draw_sprite_ext(_spr, 0, _text_x - 10, _text_y - 1, 0.5, 0.5, 0, c_white, 1) // TODO add anim on arrow
 		}
 	}
+}
+
+// -------------------- Display enemy selecion ----------------------------- //
+if select_target_mode == true {
+	var _enemy_box_x = camera_get_view_x(view_camera[0]) + 160;
+	var _enemy_box_y = camera_get_view_y(view_camera[0]) + 160;
+	var _enemy_box_w = 120;
+	var _enemy_box_h = 20;
+	var _enemy_scale_x = _enemy_box_w/_battle_menu_spr_width
+	var _enemy_scale_y = _enemy_box_h/_battle_menu_spr_height	
+	// -- draw the box -- //
+	draw_sprite_ext(_battle_spr, 0, _enemy_box_x, _enemy_box_y, _enemy_scale_x, _enemy_scale_y, 0, c_white, 1)
+	// -- draw the name -- //
+	draw_text(_enemy_box_x+3, _enemy_box_y+3, enemy[enemy_pos].label)
+	// -- draw the arrow -- //
+	var _arrow_spr = SPR_BATTLE_ENEMY_ARROW;
+	var _enemy_x = enemy[enemy_pos].x;
+	draw_sprite_ext(_arrow_spr, 0, _enemy_x + 10, 150, 1, 1, 180, c_white, 1)
+
 }
 
