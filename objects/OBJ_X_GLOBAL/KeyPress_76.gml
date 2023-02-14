@@ -1,1 +1,0 @@
-room_goto(ROOM_SAVE_SCREEN)
