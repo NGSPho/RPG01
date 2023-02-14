@@ -243,4 +243,9 @@ function type_options(_text_data, _option_id) {
 	
 }
 
-
+function battle_handler(_battle_id) {
+	
+	create_battle_from_id(_battle_id)
+	instance_destroy();
+	
+}

@@ -1,2 +1,0 @@
-var _enemies = [OBJ_MONSTER_EXECUTIONER]//, OBJ_MONSTER_SUCCUBUS, OBJ_MONSTER_EXECUTIONER]
-place_agents(_enemies)

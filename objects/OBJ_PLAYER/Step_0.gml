@@ -14,13 +14,6 @@ if instance_exists(OBJ_X_PAUSER)
 {
 	x_spd = 0;
 	y_spd = 0;
-} else {
-	// menu
-	if keyboard_check(vk_escape)
-	{
-		room_goto(ROOM_TITLE_SCREEN);
-		visible = false;
-	}
 }
 
 // set sprite

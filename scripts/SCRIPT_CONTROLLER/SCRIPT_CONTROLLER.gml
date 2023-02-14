@@ -21,6 +21,7 @@ function initialize_global_variables() {
 	log("Battle map loaded");*/
 	
 	global.team = [OBJ_PLAYER, OBJ_NPC_DANCER, OBJ_NPC_DENEA]
+	log("GLOBAL TEAM :", global.team);
 	
 	// Instanciate playable characters
 	
@@ -32,6 +33,7 @@ function initialize_global_variables() {
 		
 	global.map_text = load_text()
 	global.map_choice = load_choice()
+	global.map_battle = load_battle()
 	
 	
 }

@@ -16,3 +16,4 @@ sprite[DOWN] = 0;
 random_dir = face;
 
 XP = 0;
+LVL = 0;

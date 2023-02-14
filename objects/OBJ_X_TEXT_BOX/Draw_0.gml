@@ -44,6 +44,10 @@ switch(_text_data.type) {
 		option_handler(_text_data, _accept_key); 
 		break;
 	}
+	case "BATTLE": {
+		battle_handler(_text_data.text);
+		break;
+	}
 	default: throw("Not implemented yet"); break;
 }
 

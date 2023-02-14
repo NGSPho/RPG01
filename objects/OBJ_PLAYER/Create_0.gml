@@ -19,6 +19,6 @@ HP = MAX_HP;
 label = "Main";
 
 XP = 0;
-
+LVL = 0;
 
 portrait = SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL

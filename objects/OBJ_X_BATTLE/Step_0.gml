@@ -1,6 +1,10 @@
+if !setup_agents {
+	place_agents(enemy_obj)
+	setup_agents = true;
+}
 
-
-if !has_team_lost(enemy) && !has_team_lost(global.team) {
+if !has_team_lost(enemy) && 
+!has_team_lost(global.team) {
 //if turn < 500 {
 	// -------------- draw enemies---------------------//
 	if !instance_exists(OBJ_X_BATTLE_ANIMATION) && !instance_exists(OBJ_X_BATTLE_MENU_ACTION) {

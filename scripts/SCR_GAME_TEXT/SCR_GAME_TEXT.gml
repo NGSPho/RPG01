@@ -70,3 +70,36 @@ function load_choice() {
 	return _choice_map;
 	
 }
+
+// battles file BATTLE_ID	TYPE	MONSTERS
+function load_battle() {
+	var _csv = load_csv("text/battle.csv")
+	var _height = ds_grid_height(_csv);
+	var _battle_map = ds_map_create()
+	
+	for (var i=1; i<_height; i++) {
+		var _battle_id = _csv[# 0, i]
+		var _monsters_names = string_split(_csv[#2, i], " ");
+		var _monsters = array_create(0);
+		for (var j=0; j<array_length(_monsters_names); j++) {
+			array_push(_monsters, asset_get_index(_monsters_names[j]))
+		}
+	
+		var _battle_data = {
+			battle_id : _battle_id,
+			type : _csv[# 1, i],
+			monsters : _monsters,
+		}
+		
+		log("Add battle data " + string(_battle_data))
+		
+		if !ds_map_exists(_battle_map, _battle_id) 
+			ds_map_add(_battle_map, _battle_id, _battle_data)
+		else {
+			throw error("Duplicate battle id in csv file");
+		}
+	}
+	ds_grid_destroy(_csv);
+	return _battle_map;
+	
+}

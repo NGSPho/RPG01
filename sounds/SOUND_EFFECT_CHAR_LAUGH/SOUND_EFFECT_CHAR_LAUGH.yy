@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "SOUND_EFFECT_CHAR_LAUGH.mp3",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.56,
 }

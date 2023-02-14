@@ -1,3 +1,41 @@
+function create_battle_from_id(_battle_id) {
+	room_goto(ROOM_BATTLE)
+	var _battle_data = global.map_battle[? _battle_id];
+	with (instance_create_depth(x, y, -10000, OBJ_X_BATTLE)) {
+		enemy_obj = _battle_data.monsters
+	}
+}
+
+/// Place agents in the viewport
+function place_agents(_enemies_obj) {
+	var _view_x = camera_get_view_x(view_camera[0]);
+	var _view_y = camera_get_view_y(view_camera[0]);
+
+	for (var i=0; i<array_length(_enemies_obj); i++) {
+		var _x = _view_x + 50; // TODO center
+		var _y = _view_y + 30;
+		if i>0 {
+			var _left_enemy = OBJ_X_BATTLE.enemy[i-1]
+			_x = _left_enemy.x + _left_enemy.width;
+		}
+		log("Placing enemy", object_get_name(_enemies_obj[i]))
+		var _enemy = instance_create_depth(_x, _y, 100, _enemies_obj[i])
+		with(_enemy) {
+			x = _x;
+			y = _y;
+			width = sprite_width
+		}
+		_enemy.x = _x;
+		_enemy.y = _y;
+		OBJ_X_BATTLE.enemy[i]= _enemy
+		log("Create enemy : ", OBJ_X_BATTLE.enemy[i], "named ", object_get_name(OBJ_X_BATTLE.enemy[i].object_index), " at x ", _x , " y ", _y)	
+	}
+
+	for (var i=0; i<array_length(global.team); i++) {
+		var _ally = global.team[i];
+		_ally.visible = false;	
+	}
+}
 
 function has_team_lost(_team) {
 	//log("Checking if team has lost : ", _team);
@@ -11,7 +49,7 @@ function has_team_lost(_team) {
 
 
 function create_battle_action_menu(_ally_arr, _enemy_arr) {
-	with(instance_create_depth(10,10,-100, OBJ_X_BATTLE_MENU_ACTION)) {
+	with(instance_create_depth(10,10,-16000, OBJ_X_BATTLE_MENU_ACTION)) {
 		ally = _ally_arr;
 		enemy = _enemy_arr;
 	}

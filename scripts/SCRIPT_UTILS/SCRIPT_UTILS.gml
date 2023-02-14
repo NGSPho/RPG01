@@ -145,8 +145,52 @@ function string_return_noone_if_empty(_str) {
 		return noone;
 }
 
+function string_builder_to_string(_s_b) {
+	TODO();
+}
+
 function string_remove_quotation_marks(_str) {
 	if string_char_at(_str, 1) == "\"" && string_char_at(_str, string_length(_str)) == "\""
 		return string_copy(_str, 2, string_length(_str)-2)
 	return _str;
+}
+
+/// Split an array into a string of array
+// @param _str the string to plit
+// @param _sep the separator
+function string_split(_str, _sep) {
+	var _str_arr = array_create(0)
+	var _cur_str = ""
+	var _char = "";
+	for (var i=1; i<=string_length(_str); i++) {
+		_char = string_char_at(_str, i)
+		if _char == _sep {
+			array_push(_str_arr, _cur_str);
+			_cur_str = "";
+		} else {
+			_cur_str += string(_char)
+		}
+	}
+	if _char != _sep
+		array_push(_str_arr, _cur_str);
+	return _str_arr;
+}
+
+// --------- DRAW ------------- //
+/// Type a text centered given a bounding box 
+// @param _bb_x the x of the bounding box
+// @param _bb_y the y of the bounding box
+// @param _bb_width the width of the bounding box
+// @param _bb_height the height of the bounding box
+// @param _text the text to draw
+function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
+	var _x = _bb_x + _bb_width/2 - string_width(_text)/2
+	var _y = _bb_y + _bb_height/2 - string_height(_text)/2
+	var _c = c_white;
+	draw_text_color(_x, _y , _text, _c, _c, _c, _c, 1);
+}
+
+
+function TODO() {
+	throw error("Not implemented yet!");
 }
