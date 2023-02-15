@@ -65,26 +65,26 @@ function create_battle_animation(_actions) {
 
 /// Compute battle outcome, that is to say, status, damages, etc
 function compute_damage(_action) {
-	var _origin = _action[0];
-	var _action_name = _action[1];
-	var _target = _action[2];
+	var _origin = _action.origin;
+	var _action_name = _action.action;
+	var _target = _action.target;
 	//log("Action is o:", _origin, " n:", _action_name, " t:", _target)
 	//----  compute damage ----//
 	if is_targetted_attack(_action_name) {
 		var _dmg = -1*_origin.ATK / _target.DEF
-		_action[3] = _dmg
+		_action.dmg = _dmg
 	}
 }
 
 
 function apply_damage(_action) {
-	var _origin = _action[0];
-	var _action_name = _action[1];
+	var _origin = _action.origin;
+	var _action_name = _action.action;
 	if !is_targetted_attack(_action_name) return;
-	var _target = _action[2];
+	var _target = _action.target;
 
 	if _target.HP > 0 {
-		var _dmg = _action[3]
+		var _dmg = _action.dmg
 		_target.HP += _dmg
 		log("Target ", object_get_name(_target.object_index), " HP turned to ", _target.HP);
 	} 

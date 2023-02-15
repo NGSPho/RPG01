@@ -194,7 +194,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"choice.csv","CopyToMask":-1,"filePath":"datafiles/text",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"text.csv","CopyToMask":-1,"filePath":"datafiles/text",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"battle.csv","CopyToMask":-1,"filePath":"datafiles/text",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":".~lock.battle.csv#","CopyToMask":-1,"filePath":"datafiles/text",},
   ],
   "MetaData": {
     "IDEVersion": "2022.9.1.51",

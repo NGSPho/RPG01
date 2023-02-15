@@ -4,12 +4,12 @@ if (instance_exists(OBJ_X_BATTLE_ANIMATION_ATTACK) == false) {
 	} else {
 		var _action = actions[current_action_index];
 		debug("Processing animation for action ", string(_action));
-		var _origin = _action[0];
-		var _action_name = _action[1];
-		var _target = _action[2];
+		var _origin = _action.origin;
+		var _action_name = _action.action;
+		var _target = _action.target;
 		var _dmg = compute_damage(_action)
-		if array_length(_action) > 3
-			_dmg =_action[3];
+		if _action.dmg != noone
+			_dmg =_action.dmg;
 		var _spr = retrieve_sprite_from_action(_action_name)
 		var _audio = retrieve_audio_from_action(_action_name)
 		

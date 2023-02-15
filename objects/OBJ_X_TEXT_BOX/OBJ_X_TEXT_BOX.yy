@@ -7,7 +7,7 @@
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
-  "persistent": false,
+  "persistent": true,
   "parentObjectId": {
     "name": "OBJ_X_PAUSER",
     "path": "objects/OBJ_X_PAUSER/OBJ_X_PAUSER.yy",

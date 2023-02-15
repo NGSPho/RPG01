@@ -13,7 +13,7 @@ if (select_target_mode == true) {
 	if _accept_key == true {
 		// --- play accept sounds --- //
 		audio_play_sound(SOUND_EFFECT_BATTLE_CURSOR, 1, -1)
-		end_target_selection(selected_actions[current_ally_turn_index][0], selected_actions[current_ally_turn_index][1], enemy[enemy_pos])
+		end_target_selection(selected_actions[current_ally_turn_index].action, enemy[enemy_pos])
 	}
 	if _undo_key == true {
 		undo_target_selection()

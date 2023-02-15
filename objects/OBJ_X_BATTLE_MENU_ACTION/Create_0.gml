@@ -27,25 +27,28 @@ enemy_pos = 0;
 /// @param _action The name of the action
 /// @param _target_filter Filter on the target, ie, KO filter
 function start_target_selection(_origin, _action, _fighter_selection_filter) {
-	selected_actions[current_ally_turn_index][0] = _origin
-	selected_actions[current_ally_turn_index][1] = _action;
+	selected_actions[current_ally_turn_index] = {}
+	selected_actions[current_ally_turn_index].origin = _origin
+	selected_actions[current_ally_turn_index].action = _action;
 	// Set the initial enemy cursor
 	enemy_pos = find_first(OBJ_X_BATTLE.enemy, {KO : false})
 	select_target_mode = true;
 	
 }
 
-function end_target_selection(_ally, _action, _target) {
+function end_target_selection(_action, _target) {
 	select_target_mode = false;
-	selected_actions[current_ally_turn_index][2] = _target;
+	selected_actions[current_ally_turn_index].target = _target;
 	increment_ally_index();
 	
 }
 
 function start_action(_ally, _action) {
-	selected_actions[current_ally_turn_index][0] = _ally;
-	selected_actions[current_ally_turn_index][1] = _action;
-	selected_actions[current_ally_turn_index][2] = noone;
+	selected_actions[current_ally_turn_index] = {}
+	selected_actions[current_ally_turn_index].origin = _ally;
+	selected_actions[current_ally_turn_index].action = _action;
+	selected_actions[current_ally_turn_index].target = noone;
+	selected_actions[current_ally_turn_index].dmg = noone;
 }
 
 function end_action(_ally, _action) {	
@@ -54,7 +57,7 @@ function end_action(_ally, _action) {
 
 function undo_target_selection() {
 	select_target_mode = false;
-	selected_actions[current_ally_turn_index] = 0;
+	selected_actions[current_ally_turn_index] = {};
 }
 
 function increment_ally_index() {
