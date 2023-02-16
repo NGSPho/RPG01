@@ -27,7 +27,11 @@ if !battle_over {
 		
 		// no text box
 		log("No text box");
-		instance_destroy()
+		// launch event after the battle
+		if battle_id != noone
+			play_event(battle_id);
+		instance_destroy();
+		
 
 	}
 }

@@ -11,27 +11,6 @@ function populate_menu() {
 	}	
 }
 
-function load_game() {
-	var _load_data = load_data_arr[save_pos]
-	with (OBJ_PLAYER) instance_destroy();
-	
-	while (array_length(_load_data) > 0) {
-		
-		var _load_entity = array_pop(_load_data);
-		debug("Loaded save file ", string(_load_entity))
-		room_goto(_load_entity.current_room)
-		with(instance_create_layer(0, 0, layer, asset_get_index(_load_entity.obj))) {
-			x = _load_entity.x
-			y = _load_entity.y
-			face = _load_entity.face
-			current_room = _load_entity.current_room
-		}
-		debug("Loading OK")
-	}
-
-	instance_destroy()
-}
-	
 // -------------------------- Step ----------------------- //
 
 function move_cursor() {
@@ -78,9 +57,29 @@ function step_save(_accept_key, _return_key, _delete_key) {
 	}
 }
 
-// -------------------------- Draw ----------------------- //
+// -------------------------- Actions ----------------------- //
 
+function load_game() {
+	var _load_data = load_data_arr[save_pos]
+	with (OBJ_PLAYER) instance_destroy();
+	
+	while (array_length(_load_data) > 0) {
+		
+		var _load_entity = array_pop(_load_data);
+		debug("Loaded save file ", string(_load_entity))
+		room_goto(_load_entity.current_room)
+		with(instance_create_layer(0, 0, layer, asset_get_index(_load_entity.obj))) {
+			x = _load_entity.x
+			y = _load_entity.y
+			face = _load_entity.face
+			current_room = _load_entity.current_room
+		}
+		debug("Loading OK")
+	}
 
+	instance_destroy()
+}
+	
 
 function save_game() {
 	// Create save array
@@ -107,7 +106,7 @@ function save_game() {
 
 	debug("Game saved! " + _string)
 }
-
+ // --------------------------------------------------------------//
 // array of json
 load_data_arr = [noone, noone, noone];
 save_pos = 0;

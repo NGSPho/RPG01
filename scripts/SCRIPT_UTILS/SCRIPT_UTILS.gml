@@ -192,5 +192,5 @@ function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
 
 
 function TODO() {
-	throw error("Not implemented yet!");
+	throw("Not implemented yet!");
 }

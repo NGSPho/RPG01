@@ -7,5 +7,7 @@ actions[0, 0] = 0;
 
 battle_over = false;
 
+battle_id = noone;
+
 
 setup_agents = false;

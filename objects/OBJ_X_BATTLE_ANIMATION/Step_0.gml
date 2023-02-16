@@ -1,6 +1,9 @@
 if (instance_exists(OBJ_X_BATTLE_ANIMATION_ATTACK) == false) {
 	if current_action_index == array_length(actions) {
-		instance_destroy()
+		if timer <= 0
+			instance_destroy()
+		else
+			timer--;
 	} else {
 		var _action = actions[current_action_index];
 		debug("Processing animation for action ", string(_action));
@@ -18,7 +21,7 @@ if (instance_exists(OBJ_X_BATTLE_ANIMATION_ATTACK) == false) {
 				log("Target is already KO, not animating");
 			} else {
 				apply_damage(_action)
-				with instance_create_depth(0, 0, -999, OBJ_X_BATTLE_ANIMATION_ATTACK) {
+				with instance_create_depth(0, 0, -9999, OBJ_X_BATTLE_ANIMATION_ATTACK) {
 					origin = _origin;
 					action_name = _action_name;
 					target = _target;

@@ -1,7 +1,7 @@
 function create_battle_from_id(_battle_id) {
 	room_goto(ROOM_BATTLE)
-	var _battle_data = global.map_battle[? _battle_id];
-	with (instance_create_depth(x, y, -10000, OBJ_X_BATTLE)) {
+	var _battle_data = event_get(_battle_id, EVENT_TYPE.BATTLE);
+	with (instance_create_depth(x, y, -100, OBJ_X_BATTLE)) {
 		enemy_obj = _battle_data.monsters
 	}
 }
@@ -136,22 +136,35 @@ function distribute_XP(_allies, _enemies) {
 	var _index = find_first(_allies, { KO : false})
 	var _start = _index
 	var _loot_index = 0;
-	var _sb = string_builder_create();
+	var _tdb = text_data_builder_create();
 	do {
 		var _gained_XP = _total_XP/_nb_players
 		var _str = _allies[_index].label+" gagne "+string(_gained_XP)+" points d'experience."
 		
-		string_builder_append(_sb, _str)
+		text_data_builder_append(_tdb, _str, noone)
 		
-		_allies[_index].XP += _gained_XP
+		apply_XP(_allies[_index], _gained_XP, _tdb);
 		//gains[_loot_index] = [_gained_XP];
 		
 		_index = find_next(_allies, _index, { KO : false}, 1, false)
 	} until (_index == -1 || _index == _start )
 	
 	audio_play_sound(SOUND_EFFECT_BATTLE_VICTORY, 1, 0)
-	//create_textbox(["You won !", "The team gained "+string(_total_XP)+" total so "+string(_total_XP/_nb_players)+" each."])
-	create_textbox(_sb)
+	log("sb out ", _tdb);
+	create_textbox(_tdb);
 }
 
 
+function apply_XP(_ally, _XP, _tdb) {
+	_ally.XP += _XP;
+	var _XP_required_to_level_up = 6;
+	if _ally.XP >= _XP_required_to_level_up {
+		_ally.LVL ++;
+		_ally.XP -= _XP_required_to_level_up;
+		var _str = _ally.label + " levels up to level " + string(_ally.LVL);
+		log(_str);
+		text_data_builder_append(_tdb, _str, SOUND_EFFECT_BATTLE_LEVEL_UP)
+		log("sb in ", _tdb);
+	}
+	// TODO import XP sheets
+}

@@ -12,17 +12,15 @@ function create_textbox_from_id_2(_text_id) {
 /// @param text_arr An array of string
 function create_textbox(_text_arr) {
 	// add text to map
-	var _text_id = "battle"
+	var _text_id = "tmp"
 	var _page_number = array_length(_text_arr)
-	var _text_data_arr = [];
 	for (var d=0; d<_page_number; d++) {
-		var _text_data = text_data_create()
+		var _text_data = _text_arr[d]
 		_text_data.text_id = _text_id
-		_text_data.text = _text_arr[d]
-		_text_data.type = "TEXT"
-		array_push(_text_data_arr, _text_data);
+		_text_data.type = EVENT_TYPE.TEXT
 	}
-	ds_map_add(global.map_text, _text_id, _text_data_arr);
+	
+	ds_map_replace(global.map_text, _text_id, _text_arr);
 	with (instance_create_depth(0, 0, -15000, OBJ_X_TEXT_BOX)) {
 		font = global.font_textb
 		text_id = _text_id
@@ -55,4 +53,23 @@ function text_data_create() {
 		/// has dynamic fields already been computed
 		already_computed : false
 	}
+}
+
+
+
+/// Create a text data builder
+function text_data_builder_create() {
+	return [];
+}
+
+/// Append data to string builder
+/// @param _tdb The builder
+/// @param _string The string to append
+/// @param _snd
+function text_data_builder_append(_tdb, _string, _snd) {
+	var _text_data = text_data_create();
+	_text_data.text = _string;
+	_text_data.sound = _snd
+	array_push(_tdb, _text_data)
+	return _tdb
 }

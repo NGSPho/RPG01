@@ -142,7 +142,7 @@ function text_handler(_text_data, _accept_key, _page_number) {
 
 function option_handler(_text_data, _accept_key) {
 	if _accept_key {
-		create_textbox_from_id_2(global.map_choice[? _text_data.text][option_pos].text_id)
+		create_textbox_from_id_2(event_get(_text_data.text, EVENT_TYPE.OPTION)[option_pos].text_id)
 		instance_destroy()
 	}
 	
@@ -166,6 +166,7 @@ function type_text(_text_data) {
 					snd_count ++;
 				} else {
 					snd_count = 0;
+					log("Data sound ", _text_data.sound);
 					if _text_data.sound != noone && !audio_is_playing(_text_data.sound) {
 						audio_play_sound(_text_data.sound, 10, false);
 					}
@@ -211,7 +212,7 @@ function type_text(_text_data) {
 }
 	
 function type_options(_text_data, _option_id) {
-	var _options = global.map_choice[? _option_id]
+	var _options = event_get(_option_id, EVENT_TYPE.OPTION);
 	var _options_number = array_length(_options)
 	var _txtb_x = textbox_x + _text_data.portrait_x_offset  + _text_data.text_x_offset;
 	var _txtb_y = textbox_y;

@@ -32,7 +32,7 @@ function initialize_global_variables() {
 	}
 		
 	global.map_text = load_text()
-	global.map_choice = load_choice()
+	global.map_choice = load_option()
 	global.map_battle = load_battle()
 	
 	

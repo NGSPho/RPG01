@@ -3,7 +3,7 @@ textbox_x = camera_get_view_x(view_camera[0]);
 textbox_y = camera_get_view_y(view_camera[0]) + 160;
 
 
-var _text_data_arr = global.map_text[? text_id];
+var _text_data_arr = event_get(text_id, EVENT_TYPE.TEXT);
 
 
 // setup
@@ -30,13 +30,14 @@ if page > 0 _previous_text_data = _text_data_arr[page-1];
 var _text = _text_data.text
 
 
+log("type",_text_data.type)
 switch(_text_data.type) {
-	case "TEXT": {
+	case EVENT_TYPE.TEXT: {
 		type_text(_text_data); 
 		text_handler(_text_data, _accept_key, array_length(_text_data_arr)); 
 		break;
 	}
-	case "OPTION": {
+	case EVENT_TYPE.OPTION: {
 		draw_char = _previous_text_data.text_length;
 		_text_data.portrait_x_offset = _previous_text_data.portrait_x_offset
 		type_text(_previous_text_data); 
@@ -44,11 +45,11 @@ switch(_text_data.type) {
 		option_handler(_text_data, _accept_key); 
 		break;
 	}
-	case "BATTLE": {
+	case EVENT_TYPE.BATTLE: {
 		battle_handler(_text_data.text);
 		break;
 	}
-	default: throw("Not implemented yet"); break;
+	default: TODO();
 }
 
 

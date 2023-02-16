@@ -1,0 +1,3 @@
+"CHOICE_ID","CHOICE_SUB_ID","CHOICE_TEXT","TEXT_ID"
+"choice 1","yes","""Dub.""","npc 3 | yes"
+"choice 1","no","""Dud !""","npc 3 | no"
