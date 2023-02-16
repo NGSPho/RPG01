@@ -201,9 +201,8 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":".~lock.battle.csv#","CopyToMask":-1,"filePath":"datafiles/events",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"battle.csv","CopyToMask":-1,"filePath":"datafiles/events",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"text.csv","CopyToMask":-1,"filePath":"datafiles/events",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":".~lock.text.csv#","CopyToMask":-1,"filePath":"datafiles/events",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":".~lock.option.csv#","CopyToMask":-1,"filePath":"datafiles/events",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"option.csv","CopyToMask":-1,"filePath":"datafiles/events",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":".~lock.option.csv#","CopyToMask":-1,"filePath":"datafiles/events",},
   ],
   "MetaData": {
     "IDEVersion": "2022.9.1.51",

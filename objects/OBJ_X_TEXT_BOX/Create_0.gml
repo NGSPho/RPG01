@@ -142,7 +142,7 @@ function text_handler(_text_data, _accept_key, _page_number) {
 
 function option_handler(_text_data, _accept_key) {
 	if _accept_key {
-		create_textbox_from_id_2(event_get(_text_data.text, EVENT_TYPE.OPTION)[option_pos].text_id)
+		play_text(event_get(_text_data.text, EVENT_TYPE.OPTION)[option_pos].text_id)
 		instance_destroy()
 	}
 	
@@ -166,7 +166,6 @@ function type_text(_text_data) {
 					snd_count ++;
 				} else {
 					snd_count = 0;
-					log("Data sound ", _text_data.sound);
 					if _text_data.sound != noone && !audio_is_playing(_text_data.sound) {
 						audio_play_sound(_text_data.sound, 10, false);
 					}
@@ -246,7 +245,7 @@ function type_options(_text_data, _option_id) {
 
 function battle_handler(_battle_id) {
 	
-	create_battle_from_id(_battle_id)
+	play_battle(_battle_id)
 	instance_destroy();
 	
 }

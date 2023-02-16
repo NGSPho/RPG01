@@ -1,7 +1,10 @@
 if !battle_over {
-		if !setup_agents {
+	if !setup_agents {
 		place_agents(enemy_obj)
 		setup_agents = true;
+		var _battle_data = event_get(battle_id, EVENT_TYPE.BATTLE)
+		triggered_event = _battle_data.triggered_event
+		log("triggered event of battle ", battle_id, " is ", triggered_event)
 	}
 
 
@@ -28,8 +31,8 @@ if !battle_over {
 		// no text box
 		log("No text box");
 		// launch event after the battle
-		if battle_id != noone
-			play_event(battle_id);
+		if triggered_event != noone
+			play_event(triggered_event.event_id, triggered_event.event_type);
 		instance_destroy();
 		
 

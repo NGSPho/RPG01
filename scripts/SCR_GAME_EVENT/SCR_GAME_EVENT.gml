@@ -128,3 +128,19 @@ function event_get(event_id, event_type) {
 	}
 	
 }
+
+
+function play_event(_event_id, _event_type) {
+	log("Play event ", _event_id, " type ", _event_type);
+	switch(_event_type) {
+		case EVENT_TYPE.TEXT: {
+			play_text(_event_id);
+			break;
+		}
+		case EVENT_TYPE.BATTLE: {
+			play_battle(_event_id);
+			break;
+		}
+		default: TODO();
+	}
+}

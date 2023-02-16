@@ -29,8 +29,6 @@ var _previous_text_data = noone;
 if page > 0 _previous_text_data = _text_data_arr[page-1];
 var _text = _text_data.text
 
-
-log("type",_text_data.type)
 switch(_text_data.type) {
 	case EVENT_TYPE.TEXT: {
 		type_text(_text_data); 

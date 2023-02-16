@@ -1,8 +1,9 @@
-function create_battle_from_id(_battle_id) {
+function play_battle(_battle_id) {
 	room_goto(ROOM_BATTLE)
 	var _battle_data = event_get(_battle_id, EVENT_TYPE.BATTLE);
 	with (instance_create_depth(x, y, -100, OBJ_X_BATTLE)) {
 		enemy_obj = _battle_data.monsters
+		battle_id = _battle_id
 	}
 }
 

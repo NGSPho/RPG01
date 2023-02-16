@@ -1,3 +1,7 @@
 "CHOICE_ID","CHOICE_SUB_ID","CHOICE_TEXT","TEXT_ID"
 "choice 1","yes","""Dub.""","npc 3 | yes"
 "choice 1","no","""Dud !""","npc 3 | no"
+,,,
+,,,
+"choice 30","yes","""Je vais t'enculer !""","mechant 30 | yes"
+"choice 30","no","""Non merci.""","mechant 30 | no"

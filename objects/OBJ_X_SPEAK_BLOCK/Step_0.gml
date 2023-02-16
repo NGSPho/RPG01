@@ -7,5 +7,5 @@ function check_trigger()
 
 if check_trigger() == true
 {
-	create_textbox_from_id_2(text_id)
+	play_text(text_id)
 }

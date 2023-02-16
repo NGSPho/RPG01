@@ -1,7 +1,7 @@
 
 
 /// @param text_id
-function create_textbox_from_id_2(_text_id) {
+function play_text(_text_id) {
 	with (instance_create_depth(0, 0, -15000, OBJ_X_TEXT_BOX)) {
 		font = global.font_textb
 		text_id = _text_id
@@ -49,6 +49,8 @@ function text_data_create() {
 		line_break_pos : noone,
 		line_break_num : noone,
 		line_break_offset : noone,
+		
+		portrait_x_offset : noone,
 			
 		/// has dynamic fields already been computed
 		already_computed : false
