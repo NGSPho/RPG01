@@ -151,7 +151,6 @@ function distribute_XP(_allies, _enemies) {
 	} until (_index == -1 || _index == _start )
 	
 	audio_play_sound(SOUND_EFFECT_BATTLE_VICTORY, 1, 0)
-	log("sb out ", _tdb);
 	create_textbox(_tdb);
 }
 
@@ -165,7 +164,6 @@ function apply_XP(_ally, _XP, _tdb) {
 		var _str = _ally.label + " levels up to level " + string(_ally.LVL);
 		log(_str);
 		text_data_builder_append(_tdb, _str, SOUND_EFFECT_BATTLE_LEVEL_UP)
-		log("sb in ", _tdb);
 	}
 	// TODO import XP sheets
 }
