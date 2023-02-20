@@ -1,88 +1,46 @@
 event_inherited()
 
-right_key = keyboard_check(vk_right);
-left_key = keyboard_check(vk_left);
-up_key = keyboard_check(vk_up);
-down_key = keyboard_check(vk_down);
+var _pixel_per_second = 100;
+var _time_passed = delta_time / 1000000
+var _pixel_in_this_frame = _pixel_per_second * _time_passed
+var _x_dir = keyboard_check(vk_right) -  keyboard_check(vk_left);
+var _y_dir = keyboard_check(vk_down) -  keyboard_check(vk_up);
+var _x_spd = 0;
+var _y_spd = 0;
 
-x_spd = (right_key - left_key) * move_spd;
-y_spd = (down_key - up_key) * move_spd;
+var _dir = point_direction(0, 0, _x_dir, _y_dir)
 
-
-// pause
-if instance_exists(OBJ_X_PAUSER)
-{
-	x_spd = 0;
-	y_spd = 0;
-}
-
-// set sprite
-
-if y_spd == 0
-{
-	if x_spd > 0 { face = RIGHT };
-	if x_spd < 0 { face = LEFT };
-}
-if x_spd == 0
-{
-	if y_spd > 0 { face = DOWN };
-	if y_spd < 0 { face = UP };
-}
-
-
-// collisions
-
-if place_meeting(x + x_spd, y, OBJ_X_OBSTACLE) == true  
-{
-	x_spd = 0
-}
-if place_meeting(x, y + y_spd, OBJ_X_OBSTACLE) == true  
-{
-	y_spd = 0
-}
-
-x += x_spd;
-y += y_spd;
-
-mask_index = sprite[DOWN]
-
-// TODO some checks needed but not super clean
-if x_spd > 0 && face == LEFT { face = RIGHT; }
-if x_spd < 0 && face == RIGHT { face = LEFT; }
-if y_spd > 0 && face == UP { face = DOWN; }
-if y_spd < 0 && face == DOWN { face = UP; }
-
-
-sprite_index = sprite[face];
-
-// animate
-
-// when a player stops moving in a direction, in mid air for instance
-// the animation must be completed and must not go back to the initial frame
-// abruptely
-function reset_frame() // TODO move 
-{
-	//image_speed = 0 // manually upd image frames
-	var ind = floor(image_index)
-	if ind > 1
-	{
-		image_index = ind + 1
-	} else {
-		image_index = 0
-	}
-}
-
-if x_spd == 00 && y_spd == 00 {
-	if floor(image_index) == 0
-	{
-		stop_moving = true
-	} else {
-		if stop_moving == true {
-			image_index = 0
+if !instance_exists(OBJ_X_PAUSER) && (_x_dir != 0 || _y_dir != 0) {
+	set_sprite_direction(_dir);
+	
+	var _moved_successfully = false;
+	// ------- check collisions ------- //
+	for (var i = 0; i <= 80; i += 10) {
+		for (var n = -1; n <= 1; n += 2) {
+			var _modified_dir = (n*i) + _dir;
+			var _x_target = x + lengthdir_x(_pixel_in_this_frame, _modified_dir) * move_spd;
+			var _y_target = y + lengthdir_y(_pixel_in_this_frame, _modified_dir) * move_spd;
+			
+			if place_free(_x_target, _y_target){
+				x = _x_target;
+				y = _y_target;
+				_moved_successfully = true;
+				break;
+			}
 		}
+		
+		if _moved_successfully == true break;
 	}
+
+
+	sprite_index = sprite[face];
+	mask_index = sprite[DOWN]
+
+	// animate
+	animation_resume();
 } else {
-	stop_moving = false
+	animation_stop();
 }
+
 
 

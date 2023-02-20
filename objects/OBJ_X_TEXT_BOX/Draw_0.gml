@@ -20,6 +20,7 @@ if setup == false &&  _text_data_arr[0].already_computed == false {
 		_txt_data.already_computed = true;
 	}
 	setup = true 
+	
 }
 
 txtb_img += txtb_img_spd

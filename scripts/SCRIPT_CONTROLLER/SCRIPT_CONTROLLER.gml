@@ -10,6 +10,8 @@ function initialize_global_variables() {
 	
 	global.scale_portrait = 1;
 	
+	global.move_speed = 1;
+	
 	// map sprites names to sprites
 	global.spr_name_to_sprites = ds_map_create();
 	populate_sprite_map();

@@ -10,8 +10,8 @@
     "path": "folders/Objects/Environment.yy",
   },
   "parentObjectId": {
-    "name": "OBJ_X_OBSTACLE",
-    "path": "objects/OBJ_X_OBSTACLE/OBJ_X_OBSTACLE.yy",
+    "name": "OBJ_X_OBSTACLE_BLOCK",
+    "path": "objects/OBJ_X_OBSTACLE_BLOCK/OBJ_X_OBSTACLE_BLOCK.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -27,7 +27,7 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [],
-  "solid": false,
+  "solid": true,
   "spriteId": {
     "name": "SPR_ITEM_BOOKSHELVES",
     "path": "sprites/SPR_ITEM_BOOKSHELVES/SPR_ITEM_BOOKSHELVES.yy",

@@ -16,13 +16,6 @@ else if was_player_outside == true
 }
 
 
-// DEBUG
-if mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, OBJ_X_WARP_BLOCK)
-{
-	debug("GO TO NEXT ROOM DEBUG");
-	room_goto(ROOM_BEDROOM);
-}
-
 function warp_player()
 {
 	var inst = instance_create_depth(0, 0, -9999, OBJ_X_WARP) // TODO get limit Integer
