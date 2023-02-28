@@ -1,3 +1,5 @@
 
 instance_destroy(OBJ_X_PAUSER)
-OBJ_NPC_ABSTRACT.visible = true;
+
+if instance_exists(OBJ_NPC_ABSTRACT) 
+	OBJ_NPC_ABSTRACT.visible = true;

@@ -22,7 +22,7 @@ function initialize_global_variables() {
 	populate_battle_data()
 	log("Battle map loaded");*/
 	
-	global.team = [OBJ_PLAYER, OBJ_NPC_DANCER, OBJ_NPC_DENEA]
+	global.team = [OBJ_PLAYER]
 	log("GLOBAL TEAM :", global.team);
 	
 	// Instanciate playable characters
