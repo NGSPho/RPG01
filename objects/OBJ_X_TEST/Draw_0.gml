@@ -1,6 +1,6 @@
 /// @description shader experimentation ground
 enum SHADER {
-	
+	DAMAGE,
 	WAVY,
 	ANIMATION,
 	FRAGMENT_SQUARE,
@@ -8,17 +8,22 @@ enum SHADER {
 	MULTI_PHASE,
 	MULTI_TEXTURE,
 	GAUSSIAN_BLUR,
-	HALO
+	HALO,
+	OBLIQUE_THROW
 }
 
-var _shaders = [ SHADER.HALO, SHADER.GAUSSIAN_BLUR,
+var _shaders = [ SHADER.DAMAGE, SHADER.OBLIQUE_THROW, SHADER.HALO, SHADER.GAUSSIAN_BLUR,
 SHADER.MULTI_TEXTURE, SHADER.MULTI_PHASE, SHADER.WAVY, SHADER.ANIMATION, 
 SHADER.FRAGMENT_SQUARE, SHADER.FRAGMENT_CIRCLE ]
 
 var _next = keyboard_check_pressed(vk_space)
 if _next == true  {
 	i = (i+1) mod array_length(_shaders)
-	log("New i is ",i);
+	start_time = current_time;
+	img_animation = 0;
+}
+var _again = keyboard_check_pressed(vk_enter)
+if _again == true  {
 	start_time = current_time;
 	img_animation = 0;
 }
@@ -32,6 +37,17 @@ if _shader == SHADER.MULTI_TEXTURE {
 
 	var _sampler_overlay = shader_get_sampler_index(_shader_index, "texture_overlay");
 	texture_set_stage(_sampler_overlay, sprite_get_texture(SPR_TEXTURE_CLOUDS, 0))
+} 
+else if _shader == SHADER.DAMAGE {
+	var _shader_index = SHADER_DAMAGE;
+	shader_set(_shader_index);
+	
+	var _sampler_duration = shader_get_uniform(_shader_index, "duration");
+	shader_set_uniform_f(_sampler_duration, 700.)
+} 
+else if _shader == SHADER.OBLIQUE_THROW {
+	var _shader_index = SHADER_OBLIQUE_THROW;
+	shader_set(_shader_index);
 } 
 else if _shader == SHADER.WAVY {
 	var _shader_index = SHADER_WAVY;

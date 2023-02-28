@@ -1,7 +1,7 @@
 {
   "resourceType": "GMShader",
   "resourceVersion": "1.0",
-  "name": "SHADER_MULTI_TEXTURE",
+  "name": "SHADER_DAMAGE",
   "parent": {
     "name": "Shader TEST",
     "path": "folders/Shader TEST.yy",
