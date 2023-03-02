@@ -87,7 +87,7 @@ function shader_set_monster_attacked(_enemy) {
 		shader_set_uniform_f(_sampler_duration, _anim_duration)
 	
 		var _sampler_time = shader_get_uniform(_shader_index, "time");
-		shader_set_uniform_f(_sampler_time, _execution_time)
+		shader_set_uniform_f(_sampler_time, current_time)
 
 	
 		var _sampler_start_time = shader_get_uniform(_shader_index, "start_time");
