@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SCRIPT_MACRO",
+  "name": "SCR_UTILS",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

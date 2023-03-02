@@ -31,8 +31,9 @@ if !battle_over {
 		// no text box
 		log("No text box");
 		// launch event after the battle
-		if triggered_event != noone
-			play_event(triggered_event.event_id, triggered_event.event_type);
+		if triggered_event != noone {
+			play_event(triggered_event.event_id, triggered_event.event_type, caller);
+		}
 		instance_destroy();
 		
 

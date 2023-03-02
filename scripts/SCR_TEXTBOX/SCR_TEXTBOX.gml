@@ -1,10 +1,12 @@
 
 
 /// @param text_id
-function play_text(_text_id) {
+function play_text(_text_id, _caller = noone) {
 	with (instance_create_depth(0, 0, -15000, OBJ_X_TEXT_BOX)) {
-		font = global.font_textb
-		text_id = _text_id
+		font = global.font_textb;
+		text_id = _text_id;
+		caller = _caller;
+		debug("create textbox with caller", _caller);
 	}
 }
 
@@ -27,6 +29,7 @@ function create_textbox(_text_arr) {
 	}
 }
 
+// a text_data amounts to one page of text;
 function text_data_create() {
 	return {
 		text_id : noone,
@@ -38,8 +41,10 @@ function text_data_create() {
 		sound : noone,
 		portrait : noone,
 		sprite : SPR_TEXT_BOX,
+		constraint : noone,
+		constraint_value : noone,
 			
-		// will be filled later
+		// dynamic fields
 		text_length : noone,
 			
 		char : noone,

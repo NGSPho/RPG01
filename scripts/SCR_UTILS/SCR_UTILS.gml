@@ -155,26 +155,6 @@ function string_remove_quotation_marks(_str) {
 	return _str;
 }
 
-/// Split an array into a string of array
-// @param _str the string to plit
-// @param _sep the separator
-function string_split(_str, _sep) {
-	var _str_arr = array_create(0)
-	var _cur_str = ""
-	var _char = "";
-	for (var i=1; i<=string_length(_str); i++) {
-		_char = string_char_at(_str, i)
-		if _char == _sep {
-			array_push(_str_arr, _cur_str);
-			_cur_str = "";
-		} else {
-			_cur_str += string(_char)
-		}
-	}
-	if _char != _sep
-		array_push(_str_arr, _cur_str);
-	return _str_arr;
-}
 
 // --------- DRAW ------------- //
 /// Type a text centered given a bounding box 
@@ -193,4 +173,9 @@ function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
 
 function TODO() {
 	throw("Not implemented yet!");
+}
+
+function throw_and_log(_str) {
+	log(_str);
+	throw(_str);
 }

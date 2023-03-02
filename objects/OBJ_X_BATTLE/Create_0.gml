@@ -15,6 +15,8 @@ setup_agents = false;
 
 ko_time = 0;
 
+caller = noone;
+
 if instance_exists(OBJ_NPC_ABSTRACT) 
 	OBJ_NPC_ABSTRACT.visible = false;
 	
@@ -62,8 +64,8 @@ function shader_set_monster_attacked(_enemy) {
 	}
 	
 	
-	var _attack_duration = 1000.; // in ms, anim + additional freeze time;
-	var _anim_duration = 200.; // in ms
+	var _attack_duration = 1300.; // in ms, anim + additional freeze time;
+	var _anim_duration = 1000.; // in ms
 	var _execution_time = current_time - _enemy.attacked_time;
 	
 	if  _execution_time > _attack_duration {
@@ -72,11 +74,12 @@ function shader_set_monster_attacked(_enemy) {
 		_enemy.attacked_time = 0;
 		return;
 	}
-	
+	// TODO fix
 	// Freeze enemy for a while
 	_enemy.image_index = (_enemy.image_index-1)*_enemy.speed;
 	
 	if (_execution_time <= _anim_duration) {
+		debug("shader attack");
 		var _height = sprite_get_height(_enemy.sprite_index)
 		var _width = sprite_get_width(_enemy.sprite_index)
 	

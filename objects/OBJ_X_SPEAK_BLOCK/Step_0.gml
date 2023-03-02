@@ -7,5 +7,7 @@ function check_trigger()
 
 if check_trigger() == true
 {
-	play_text(text_id)
+	interaction_count ++;
+	debug("Increment interaction count to ", interaction_count);
+	play_text(text_id, self.id);
 }

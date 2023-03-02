@@ -1,9 +1,11 @@
-function play_battle(_battle_id) {
+function play_battle(_battle_id, _caller = noone) {
 	room_goto(ROOM_BATTLE)
 	var _battle_data = event_get(_battle_id, EVENT_TYPE.BATTLE);
 	with (instance_create_depth(x, y, -100, OBJ_X_BATTLE)) {
-		enemy_obj = _battle_data.monsters
-		battle_id = _battle_id
+		enemy_obj = _battle_data.monsters;
+		battle_id = _battle_id;
+		caller = _caller;
+		debug("Creating battle with caller ", caller);
 	}
 }
 
@@ -166,4 +168,50 @@ function apply_XP(_ally, _XP, _tdb) {
 		text_data_builder_append(_tdb, _str, SOUND_EFFECT_BATTLE_LEVEL_UP)
 	}
 	// TODO import XP sheets
+}
+
+
+
+// battles file BATTLE_ID	TYPE	MONSTERS	EVENT_ID	EVENT_TYPE
+function load_battle() {
+	var _csv = load_csv(global.csv_folder+"battle.csv")
+	var _height = ds_grid_height(_csv);
+	var _battle_map = ds_map_create()
+	
+	for (var i=1; i<_height; i++) {
+		var _battle_id = _csv[# 0, i]
+		var _monsters_names = string_split(_csv[#2, i], " ");
+		var _monsters = array_create(0);
+		for (var j=0; j<array_length(_monsters_names); j++) {
+			array_push(_monsters, asset_get_index(_monsters_names[j]))
+		}
+		var _event_id = string_return_noone_if_empty(_csv[#3, i])
+		var _event_type = string_return_noone_if_empty(_csv[#4, i])
+		var _triggered_event = noone;
+		if _event_id != noone {
+			if _event_type == noone throw("Battle id "+_battle_id+" : following event can't have an empty type if id is specified.")
+			_triggered_event = {
+				event_id : _event_id,
+				event_type : EVENT_TYPE_get(_event_type),
+			}
+		}
+	
+		var _battle_data = {
+			battle_id : _battle_id,
+			type : _csv[# 1, i],
+			monsters : _monsters,
+			triggered_event : _triggered_event
+		}
+		
+		//log("Add battle data " + string(_battle_data))
+		
+		if !ds_map_exists(_battle_map, _battle_id) 
+			ds_map_add(_battle_map, _battle_id, _battle_data)
+		else {
+			throw("Duplicate battle id in csv file");
+		}
+	}
+	ds_grid_destroy(_csv);
+	return _battle_map;
+	
 }

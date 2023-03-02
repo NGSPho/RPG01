@@ -22,7 +22,7 @@ function initialize_global_variables() {
 	populate_battle_data()
 	log("Battle map loaded");*/
 	
-	global.team = [OBJ_PLAYER]
+	global.team = [OBJ_FIGHTER_PLAYER]
 	log("GLOBAL TEAM :", global.team);
 	
 	// Instanciate playable characters
@@ -39,6 +39,19 @@ function initialize_global_variables() {
 	global.map_join = load_join()
 	
 	
+}
+
+function load_team() {
+	var _team = [OBJ_PLAYER]
+	log("GLOBAL TEAM :", global.team);
+	
+	// Instanciate playable characters
+	
+	for (var i=0; i<array_length(global.team); i++) {
+		var _teammate = instance_create_depth(0, 0, 0, global.team[i])
+		with(_teammate) { visible = false }
+		log("Created teammate " + object_get_name(_teammate.object_index));
+	}
 }
 
 

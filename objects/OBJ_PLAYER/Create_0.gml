@@ -6,16 +6,6 @@ move_spd = global.move_speed;
 face = DOWN;
 stop_moving = true; // next time frame is index 0, set to true until arrow key is pressed..
 
-// ------------ battle stats ------------ //
-MAX_HP = 3;
-ATK = 1;
-DEF = 0;
-HP = MAX_HP;
-
-label = "Main";
-
-XP = 0;
-LVL = 0;
 
 portrait = SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL
 
