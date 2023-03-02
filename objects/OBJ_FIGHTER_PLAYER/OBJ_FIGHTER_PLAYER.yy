@@ -1,20 +1,19 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "OBJ_NPC_ABSTRACT",
+  "name": "OBJ_FIGHTER_PLAYER",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Characters",
-    "path": "folders/Objects/Characters.yy",
+    "name": "BATTLE",
+    "path": "folders/Objects/Characters/BATTLE.yy",
   },
   "parentObjectId": {
-    "name": "OBJ_X_SPEAK_BLOCK",
-    "path": "objects/OBJ_X_SPEAK_BLOCK/OBJ_X_SPEAK_BLOCK.yy",
+    "name": "OBJ_FIGHTER_ABSTRACT",
+    "path": "objects/OBJ_FIGHTER_ABSTRACT/OBJ_FIGHTER_ABSTRACT.yy",
   },
   "persistent": true,
   "physicsAngularDamping": 0.1,
@@ -32,9 +31,9 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "SPR_X_NPC_ABSTRACT",
-    "path": "sprites/SPR_X_NPC_ABSTRACT/SPR_X_NPC_ABSTRACT.yy",
+    "name": "SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL",
+    "path": "sprites/SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL/SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

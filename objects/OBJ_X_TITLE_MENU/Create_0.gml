@@ -22,6 +22,8 @@ pos = 0;
 menu_level = 0;
 
 instance_create_depth(0, 0, 0, OBJ_X_PAUSER)
+
 if instance_exists(OBJ_NPC_ABSTRACT)
 	OBJ_NPC_ABSTRACT.visible = false;
-OBJ_PLAYER.visible = false;
+if instance_exists(OBJ_PLAYER)
+	OBJ_PLAYER.visible = false;

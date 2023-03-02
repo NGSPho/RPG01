@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Shader TEST",
-    "path": "folders/Shader TEST.yy",
+    "name": "Shaders",
+    "path": "folders/Shaders.yy",
   },
   "parentObjectId": null,
   "persistent": false,

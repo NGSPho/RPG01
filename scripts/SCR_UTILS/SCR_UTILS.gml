@@ -14,8 +14,7 @@ function get_max_width_from_string_array(tab)
 	return max_width;
 }
 
-
-
+// --------------------- LOGS ---------------------- //
 // print(variables or strings)
 function log() 
 {
@@ -43,6 +42,21 @@ function debug()
 	}
 
 	show_debug_message("LOG : " + output_string);
+}
+
+
+function error() 
+{
+	var output_string = "";
+	var str = "";
+	for (var i = 0; i < argument_count; i++) 
+	{
+	    str = argument[i];
+	    if (!is_string(str)) str = string(str);
+	    output_string += str + " ";
+	}
+
+	show_debug_message("ERROR : " + output_string);
 }
 
 
@@ -75,16 +89,16 @@ function array_contains(_arr, _item) {
 /// @_filter Is of the same structure as fighter_selection_filter 
 /// @_direction Is 1 or -1, gives the direction in the list
 /// @_loop Do we want to keep looping or not
-function find_next(_arr, _index, _filter, _direction, loop) { //TODO make filter and direction optional
-	
-	var _start_index = _index
+function find_next(_arr, _index, _filter, _direction, _loop, _start_index = noone) { //TODO make filter and direction optional
+	if _start_index == noone
+		_start_index = _index
 	do {
 		var _D = array_length(_arr)
 		_index = (_index + _D + _direction) % _D
 	} until (
 		apply_filter(_arr[_index], _filter) || _start_index == _index)
 	if _start_index == _index {
-		if loop == true return _index else return -1
+		if _loop == true return _index else return -1
 	} else {
 		return _index;
 	}
@@ -105,12 +119,11 @@ function count_matches(_arr, _filter) {
 	var _index = find_first(_arr, _filter)
 	var _start = _index;
 	if _index == -1 return 0;
-	
-	var _count = 1;
-	do {
+	var _count = 0;
+	while (_index != -1) {
 		_count++;
-		item = find_next(_arr, _index, _filter, 1, false)
-	} until (_index == -1 || _index == _start)
+		_index = find_next(_arr, _index, _filter, 1, false, _start);
+	}
 	return _count;
 }
 
@@ -155,26 +168,6 @@ function string_remove_quotation_marks(_str) {
 	return _str;
 }
 
-/// Split an array into a string of array
-// @param _str the string to plit
-// @param _sep the separator
-function string_split(_str, _sep) {
-	var _str_arr = array_create(0)
-	var _cur_str = ""
-	var _char = "";
-	for (var i=1; i<=string_length(_str); i++) {
-		_char = string_char_at(_str, i)
-		if _char == _sep {
-			array_push(_str_arr, _cur_str);
-			_cur_str = "";
-		} else {
-			_cur_str += string(_char)
-		}
-	}
-	if _char != _sep
-		array_push(_str_arr, _cur_str);
-	return _str_arr;
-}
 
 // --------- DRAW ------------- //
 /// Type a text centered given a bounding box 
@@ -193,4 +186,9 @@ function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
 
 function TODO() {
 	throw("Not implemented yet!");
+}
+
+function throw_and_log(_str) {
+	log(_str);
+	throw(_str);
 }

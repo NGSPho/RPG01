@@ -30,9 +30,9 @@ for (var i=0; i<array_length(global.team); i++) {
 	draw_text(_text_x, _text_y + 10, "HP : " + string(_ally.HP) + "/" + string(_ally.MAX_HP))
 	//-------- draw the portrait -------//
 	var _target_portrait_size = 25;
-	var _portrait_scale_x = _target_portrait_size/sprite_get_width(_ally.portrait);
-	var _portrait_scale_y = _target_portrait_size/sprite_get_height(_ally.portrait);
-	draw_sprite_ext(_ally.portrait, 0, _text_x, _text_y + 20, _portrait_scale_x, _portrait_scale_y, 0, c_white, 1)
+	var _portrait_scale_x = _target_portrait_size/sprite_get_width(_ally.sprite_index);
+	var _portrait_scale_y = _target_portrait_size/sprite_get_height(_ally.sprite_index);
+	draw_sprite_ext(_ally.sprite_index, 0, _text_x, _text_y + 20, _portrait_scale_x, _portrait_scale_y, 0, c_white, 1)
 }
 	
 	

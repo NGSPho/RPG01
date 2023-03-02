@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "SHADER_ANIMATED_SHAPE",
   "parent": {
-    "name": "Shader TEST",
-    "path": "folders/Shader TEST.yy",
+    "name": "Shaders",
+    "path": "folders/Shaders.yy",
   },
   "type": 1,
 }

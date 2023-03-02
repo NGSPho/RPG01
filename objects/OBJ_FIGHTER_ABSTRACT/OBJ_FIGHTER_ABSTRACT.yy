@@ -1,22 +1,18 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "OBJ_NPC_ABSTRACT",
+  "name": "OBJ_FIGHTER_ABSTRACT",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Characters",
-    "path": "folders/Objects/Characters.yy",
+    "name": "BATTLE",
+    "path": "folders/Objects/Characters/BATTLE.yy",
   },
-  "parentObjectId": {
-    "name": "OBJ_X_SPEAK_BLOCK",
-    "path": "objects/OBJ_X_SPEAK_BLOCK/OBJ_X_SPEAK_BLOCK.yy",
-  },
-  "persistent": true,
+  "parentObjectId": null,
+  "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,
@@ -31,10 +27,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "SPR_X_NPC_ABSTRACT",
-    "path": "sprites/SPR_X_NPC_ABSTRACT/SPR_X_NPC_ABSTRACT.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

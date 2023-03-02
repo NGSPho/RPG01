@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SCR_BATTLE",
+  "name": "SCR_CONTROLLER",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

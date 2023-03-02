@@ -15,7 +15,7 @@
     "name": "OBJ_NPC_ABSTRACT",
     "path": "objects/OBJ_NPC_ABSTRACT/OBJ_NPC_ABSTRACT.yy",
   },
-  "persistent": true,
+  "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
   "physicsFriction": 0.2,

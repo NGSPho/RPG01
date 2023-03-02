@@ -5,29 +5,40 @@ textbox_x = 0;
 textbox_y = 0;
 border = 8;
 line_sep = 12;
-line_width = textbox_width - border * 2; // use for line break
+line_width = textbox_width - border * 2; // used for line break
 txtb_img = 0;
 txtb_img_spd = 6/60;
 
-font = 0;
 
-// the text
+// the text data of each pages
+text_data_array = [];
+// what is the caller (speak block?) of the text box
+caller = noone;
+
+// ----------- Dynamic fields ----------- //
+// the current page
 page = 0;
-
+// the current char on the current page
 draw_char = 0;
-text_spd = 1;
-//options
-
+// the current position of the option cursor
 option_pos = 0;
-
+// setup is true if all setup data has already been computed
 setup = false;
+
+
+// ----------- Cosmetics ------------ //
+// font
+font = 0;
 // sound
 snd_delay = 4;
 snd_count = snd_delay;
 // effects
 text_pause_timer = 0;
 text_pause_time = 16;
+// speed at which the tect is typed
+text_spd = 1;
 
+// ---------------------------------- //
 
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
@@ -142,7 +153,7 @@ function text_handler(_text_data, _accept_key, _page_number) {
 
 function option_handler(_text_data, _accept_key) {
 	if _accept_key {
-		play_text(event_get(_text_data.text, EVENT_TYPE.OPTION)[option_pos].text_id)
+		play_text(event_get(_text_data.text, EVENT_TYPE.OPTION)[option_pos].text_id, caller)
 		instance_destroy()
 	}
 	
@@ -244,8 +255,12 @@ function type_options(_text_data, _option_id) {
 }
 
 function battle_handler(_battle_id) {
-	
-	play_battle(_battle_id)
+	play_battle(_battle_id, caller)
 	instance_destroy();
 	
+}
+
+function join_handler(_join_id) {
+	play_join(_join_id);
+	instance_destroy();
 }

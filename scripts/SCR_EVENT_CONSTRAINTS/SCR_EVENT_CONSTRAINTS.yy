@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SCRIPT_UTILS",
+  "name": "SCR_EVENT_CONSTRAINTS",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

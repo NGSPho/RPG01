@@ -2,7 +2,7 @@ event_inherited();
 MAX_HP = 4;
 ATK = 3;
 DEF = 1;
-XP = 6;
+XP = 30;
 
 HP = MAX_HP;
 
