@@ -6,15 +6,20 @@ if !has_team_lost(enemy) || !has_team_lost(global.team) {
 	for (var i=0; i<array_length(enemy); i++) {
 		var _enemy = enemy[i];
 		if _enemy.KO = false {
-			//("Display enemy ", object_get_name(_enemy.object_index))
 			shader_set_monster_attacked(_enemy);
-			draw_sprite_ext(_enemy.sprite_index, _enemy.image_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, 0, c_white, 1)
+			draw_sprite_simplified(_enemy.sprite_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, _enemy.image_index)
 			shader_reset();
+			//-------------- Draw the health bar -------------//
+			var _health_bar_y =  _enemy.y + 30;
+			var _health_bar_height = 3;
+			var _health_bar_width = 30;
+			// center health bar
+			var _x = _enemy.x - _health_bar_width/2;
+			var _y = _enemy.bbox_bottom - 20;
+			draw_health_bar(_enemy, _x,  _y, _health_bar_width, _health_bar_height);
 		} else {
-			//log("Enemy ", object_get_name(_enemy.object_index))
-			// don't display koed enemy
 			shader_set_monster_kill(_enemy);
-			draw_sprite_ext(_enemy.sprite_index, _enemy.image_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, 0, c_white, 1)
+			draw_sprite_simplified(_enemy.sprite_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, _enemy.image_index)
 			shader_reset();
 		}
 	}

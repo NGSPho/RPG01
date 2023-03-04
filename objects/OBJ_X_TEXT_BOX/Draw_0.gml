@@ -23,17 +23,15 @@ if setup == false && array_length(text_data_array) == 0 {
 	}
 	
 	debug("Filtered ", text_data_array);
-	//if (_unfiltered_text_data_array[0].already_computed == false) {
-		for(var p = 0 ; p < array_length(text_data_array) ; p++ ) {
-			var _txt_data = text_data_array[p]
-			 _txt_data.text_length = string_length(_txt_data.text);	// TODO remove ? is it really useful	  store HOW MANY CHARS ARE ON EACH PAGE	
-			compute_x_offset_2(_txt_data)
-			compute_line_breaks_2(_txt_data, line_width)
-			compute_char_pos_2(_txt_data, textbox_x, textbox_y, border, line_sep)
+	for(var p = 0 ; p < array_length(text_data_array) ; p++ ) {
+		var _txt_data = text_data_array[p]
+			_txt_data.text_length = string_length(_txt_data.text);	// TODO remove ? is it really useful	  store HOW MANY CHARS ARE ON EACH PAGE	
+		compute_x_offset_2(_txt_data)
+		compute_line_breaks_2(_txt_data, line_width)
+		compute_char_pos_2(_txt_data, textbox_x, textbox_y, border, line_sep)
 		
-			_txt_data.already_computed = true;
-		}
-	//} 
+		_txt_data.already_computed = true;
+	}
 	setup = true 
 	
 }

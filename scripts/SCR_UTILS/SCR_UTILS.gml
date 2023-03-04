@@ -183,6 +183,27 @@ function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
 	draw_text_color(_x, _y , _text, _c, _c, _c, _c, 1);
 }
 
+/// Draw a sprite centered given a bounding box 
+// @param _spr the sprite to draw
+// @param _width x the desired height of the sprite on the screen
+// @param _height the desired height of the sprite on the screen
+// @param _bb_x the x of the bounding box
+// @param _bb_y the y of the bounding box
+// @param _bb_width the width of the bounding box
+// @param _bb_height the height of the bounding box
+function draw_centered_sprite(_spr, _width, _height, _bb_x, _bb_y, _bb_width, _bb_height) {
+	var _x = _bb_x + _bb_width/2 - _width;
+	var _y = _bb_y + _bb_height/2 - _height;
+	var _scale_x =_width/sprite_get_width(_spr);
+	var _scale_y =_height/sprite_get_height(_spr);
+	draw_sprite_simplified(_spr, _x, _y , _scale_x, _scale_y);
+}
+
+/// Simplified draw function
+function draw_sprite_simplified(_sprite, _x, _y, _scale_x, _scale_y, _subimage = 0) {
+	draw_sprite_ext(_sprite, _subimage,  _x, _y, _scale_x, _scale_y , 0, c_white, 1)
+}
+
 
 function TODO() {
 	throw("Not implemented yet!");

@@ -39,6 +39,45 @@ function place_agents(_enemies_obj) {
 		_ally.visible = false;	
 	}
 }
+/// draw a health bar given fighter, x, y, width and height of the bar
+// @param _x is the height of the colored bar, warning sprite of the border can be higher than that, same for y
+// @param _y is the vertical offset
+// @param _width is the desired width of the bar, the border can be wider, same as height
+// @param _height is the desired height of the bar
+function draw_health_bar(_agent, _x, _y, _width, _height) {
+	// -------- draw the colored bar ------ //
+	var _health_bar_back_sprite = SPR_BATTLE_MENU_HEALTH_BAR_BACK;
+	var _health_bar_sprite;
+	var _health_bar_percentage = _agent.HP / _agent.MAX_HP;
+	if 0.4 < _health_bar_percentage && _health_bar_percentage < 0.7 
+		_health_bar_sprite = SPR_BATTLE_MENU_HEALTH_BAR_MEDIUM;
+	else if 0.4 >= _health_bar_percentage 
+		_health_bar_sprite = SPR_BATTLE_MENU_HEALTH_BAR_LOW;
+	else
+		_health_bar_sprite = SPR_BATTLE_MENU_HEALTH_BAR_HIGH;
+
+	var _health_bar_scale_x = _width/sprite_get_width(_health_bar_sprite);
+	var _health_bar_scale_y = _height/sprite_get_height(_health_bar_sprite);
+
+	draw_sprite_simplified(_health_bar_back_sprite, _x, _y, _health_bar_scale_x, _health_bar_scale_y)
+	draw_sprite_simplified(_health_bar_sprite, _x, _y, _health_bar_scale_x*_health_bar_percentage, _health_bar_scale_y)
+	
+	
+	var _health_bar_border_sprite = SPR_BATTLE_MENU_HEALTH_BAR_BORDER;
+	var _health_bar_box_nine_slice = sprite_get_nineslice(_health_bar_border_sprite);
+	// actual width
+	var _health_bar_border_sprite_width = sprite_get_width(_health_bar_border_sprite);
+	var _health_bar_border_sprite_height = sprite_get_height(_health_bar_border_sprite);
+	// target width
+	var _health_bar_border_width = _width+_health_bar_box_nine_slice.right+_health_bar_box_nine_slice.left;
+	var _health_bar_border_height = _height+_health_bar_box_nine_slice.top+_health_bar_box_nine_slice.bottom
+	var _health_bar_border_scale_x = _health_bar_border_width/_health_bar_border_sprite_width;
+	var _health_bar_border_scale_y = _health_bar_border_height/_health_bar_border_sprite_height;
+	
+	
+	draw_sprite_simplified(_health_bar_border_sprite, _x-_health_bar_box_nine_slice.right, _y-_health_bar_box_nine_slice.top, _health_bar_border_scale_x, _health_bar_border_scale_y)
+	
+}
 
 function has_team_lost(_team) {
 	//log("Checking if team has lost : ", _team);
@@ -88,7 +127,7 @@ function apply_damage(_action) {
 
 	if _target.HP > 0 {
 		var _dmg = _action.dmg
-		_target.HP += _dmg
+		_target.HP += _dmg;
 		log("Target ", object_get_name(_target.object_index), " HP turned to ", _target.HP);
 	} 
 }

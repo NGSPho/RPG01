@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SCR_TEXTBOX",
+  "name": "SCR_TEXT_BOX",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

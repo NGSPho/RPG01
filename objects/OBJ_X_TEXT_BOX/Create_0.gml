@@ -246,7 +246,7 @@ function type_options(_text_data, _option_id) {
 		
 		// the arrow
 		if option_pos == op 
-			draw_sprite(SPR_TEXTBOX_ARROW, 0, _txtb_x, _txtb_y - _op_space * _options_number + _op_space * op );
+			draw_sprite(SPR_TEXT_BOX_ARROW, 0, _txtb_x, _txtb_y - _op_space * _options_number + _op_space * op );
 			
 		// the options text
 		draw_text(_txtb_x + 16 + _op_bord, _txtb_y - _op_space * _options_number + _op_space * op + 2, _option.choice_text);

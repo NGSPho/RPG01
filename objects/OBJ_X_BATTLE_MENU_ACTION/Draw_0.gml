@@ -8,7 +8,7 @@ var _battle_menu_spr_height = sprite_get_height(_battle_spr)
 var _ally_menu_x = camera_get_view_x(view_camera[0]) + 32
 var _ally_menu_y = camera_get_view_y(view_camera[0]);
 var _ally_menu_width = 213;
-var _ally_menu_height = 53;
+var _ally_menu_height = 55;
 
 var _scale_x =  _ally_menu_width/_battle_menu_spr_width
 var _scale_y = _ally_menu_height/_battle_menu_spr_height
@@ -28,11 +28,20 @@ for (var i=0; i<array_length(global.team); i++) {
 	var _text_y = 3;
 	draw_text(_text_x, _text_y, _ally.label)
 	draw_text(_text_x, _text_y + 10, "HP : " + string(_ally.HP) + "/" + string(_ally.MAX_HP))
-	//-------- draw the portrait -------//
+	var _aligned_x = _text_x + 5;
+	//--------- draw health bar --------//
+	
+	var _health_bar_y = _text_y+20;
+	var _health_bar_height = 3;
+	var _health_bar_width = 30;
+	draw_health_bar(_ally, _aligned_x, _text_y+20, _health_bar_width, _health_bar_height);
+
+
+//-------- draw the portrait -------//
 	var _target_portrait_size = 25;
 	var _portrait_scale_x = _target_portrait_size/sprite_get_width(_ally.sprite_index);
 	var _portrait_scale_y = _target_portrait_size/sprite_get_height(_ally.sprite_index);
-	draw_sprite_ext(_ally.sprite_index, 0, _text_x, _text_y + 20, _portrait_scale_x, _portrait_scale_y, 0, c_white, 1)
+	draw_sprite_ext(_ally.sprite_index, 0, _aligned_x, _text_y + 24, _portrait_scale_x, _portrait_scale_y, 0, c_white, 1)
 }
 	
 	
