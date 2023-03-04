@@ -1,8 +1,8 @@
 // textbox param
 textbox_width = 180;
 textbox_height = 53;
-textbox_x = 0;
-textbox_y = 0;
+textbox_x = camera_get_view_x(view_camera[0]);
+textbox_y = camera_get_view_y(view_camera[0]) + 160;
 border = 8;
 line_sep = 12;
 line_width = textbox_width - border * 2; // used for line break

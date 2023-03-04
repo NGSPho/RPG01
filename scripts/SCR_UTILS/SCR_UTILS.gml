@@ -6,8 +6,7 @@
 function get_max_width_from_string_array(tab)
 {
 	var max_width = 0;
-	for (var i = 0 ; i < array_length(tab) ; i++)
-	{
+	for (var i = 0 ; i < array_length(tab) ; i++) {
 		var str_width = string_width(tab[i])
 		max_width = max(max_width, str_width)
 	}
@@ -183,6 +182,11 @@ function draw_centered_text(_bb_x, _bb_y, _bb_width, _bb_height, _text) {
 	draw_text_color(_x, _y , _text, _c, _c, _c, _c, 1);
 }
 
+function draw_text_simplified(_x, _y, _text) {
+	var _c = c_white;
+	draw_text_color(_x, _y , _text, _c, _c, _c, _c, 1);
+}
+
 /// Draw a sprite centered given a bounding box 
 // @param _spr the sprite to draw
 // @param _width x the desired height of the sprite on the screen
@@ -199,8 +203,16 @@ function draw_centered_sprite(_spr, _width, _height, _bb_x, _bb_y, _bb_width, _b
 	draw_sprite_simplified(_spr, _x, _y , _scale_x, _scale_y);
 }
 
-/// Simplified draw function
+
+/// Simplified draw function using scale
 function draw_sprite_simplified(_sprite, _x, _y, _scale_x, _scale_y, _subimage = 0) {
+	draw_sprite_ext(_sprite, _subimage,  _x, _y, _scale_x, _scale_y , 0, c_white, 1)
+}
+
+/// Simplified draw function don't need scale but width and height
+function draw_sprite_simplified_2(_sprite, _x, _y, _width, _height, _subimage = 0) {
+	var _scale_x = _width/sprite_get_width(_sprite) ;
+	var _scale_y = _height/sprite_get_height(_sprite);
 	draw_sprite_ext(_sprite, _subimage,  _x, _y, _scale_x, _scale_y , 0, c_white, 1)
 }
 
