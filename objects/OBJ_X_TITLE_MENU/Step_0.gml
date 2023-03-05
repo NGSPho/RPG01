@@ -5,7 +5,6 @@ function resume()
 {
 
 	if !instance_exists(OBJ_PLAYER) { room_goto(global.start_room); return }
-	OBJ_PLAYER.visible = true
 	room_goto(OBJ_PLAYER.current_room); 
 }
 

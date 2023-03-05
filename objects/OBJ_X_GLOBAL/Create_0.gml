@@ -8,12 +8,15 @@ function resume_sound() {
 	audio_resume_sound(OBJ_X_SOUNDTRACK.current_bgm)
 }
 
-function room_is_menu(_room) {
-	return _room == ROOM_INIT 
-		|| _room == ROOM_BATTLE
-		|| _room == ROOM_GAME_OVER
-		|| _room == ROOM_TITLE_SCREEN 
-		|| _room == ROOM_SAVE_SCREEN ;
+function menu_opened() {
+	var _room_condition = room == ROOM_INIT 
+		|| room == ROOM_BATTLE
+		|| room == ROOM_GAME_OVER
+		|| room == ROOM_TITLE_SCREEN 
+		|| room == ROOM_SAVE_SCREEN 
+	var _instance_condition = instance_exists(OBJ_X_PAUSER);
+	debug("Room condition is ", _room_condition, " instance condition is ", _instance_condition);
+	return _room_condition ||_instance_condition;
 }
 sound_is_paused = false;
 

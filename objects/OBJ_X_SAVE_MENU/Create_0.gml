@@ -126,10 +126,7 @@ save_box_height = sprite_get_height(box_spr) * scale_y;
 dist_box = 7;
 
 ///////////////////
-
-
-OBJ_NPC_ABSTRACT.visible = false;
-OBJ_PLAYER.visible = false;
+agents_hide();
 populate_menu();
 
 

@@ -7,8 +7,6 @@ face = DOWN;
 stop_moving = true; // next time frame is index 0, set to true until arrow key is pressed..
 
 
-portrait = SPR_CHAR_PORTRAIT_SLIME_00_NEUTRAL
-
 
 /// smooth character animation when he stops moving
 function animation_stop() {
