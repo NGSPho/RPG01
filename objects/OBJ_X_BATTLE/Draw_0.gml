@@ -10,13 +10,12 @@ if !has_team_lost(enemy) || !has_team_lost(global.team) {
 			draw_sprite_simplified(_enemy.sprite_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, _enemy.image_index)
 			shader_reset();
 			//-------------- Draw the health bar -------------//
-			var _health_bar_y =  _enemy.y + 30;
+			var _health_bar_y =  _enemy.y + 115;
 			var _health_bar_height = 3;
 			var _health_bar_width = 30;
 			// center health bar
 			var _x = _enemy.x - _health_bar_width/2;
-			var _y = _enemy.bbox_bottom - 20;
-			draw_health_bar(_enemy, _x,  _y, _health_bar_width, _health_bar_height);
+			draw_agent_bar(_enemy, _x, _health_bar_y, _health_bar_width, _health_bar_height);
 		} else {
 			shader_set_monster_kill(_enemy);
 			draw_sprite_simplified(_enemy.sprite_index, _enemy.x, _enemy.y, _scale_enemies, _scale_enemies, _enemy.image_index)

@@ -29,19 +29,21 @@ for (var i=0; i<array_length(global.team); i++) {
 	draw_text(_text_x, _text_y, _ally.label)
 	draw_text(_text_x, _text_y + 10, "HP : " + string(_ally.HP) + "/" + string(_ally.MAX_HP))
 	var _aligned_x = _text_x + 5;
-	//--------- draw health bar --------//
-	
-	var _health_bar_y = _text_y+20;
-	var _health_bar_height = 3;
-	var _health_bar_width = 30;
-	draw_health_bar(_ally, _aligned_x, _text_y+20, _health_bar_width, _health_bar_height);
 
-
-//-------- draw the portrait -------//
+	//-------- draw the portrait -------//
 	var _target_portrait_size = 25;
 	var _portrait_scale_x = _target_portrait_size/sprite_get_width(_ally.sprite_index);
 	var _portrait_scale_y = _target_portrait_size/sprite_get_height(_ally.sprite_index);
 	draw_sprite_ext(_ally.sprite_index, 0, _aligned_x, _text_y + 24, _portrait_scale_x, _portrait_scale_y, 0, c_white, 1)
+	
+	//--------- draw health bar --------//
+	var _health_bar_y = _text_y+20;
+	var _health_bar_height = 2;
+	var _health_bar_width = 30;
+	draw_agent_bar(_ally, _aligned_x, _text_y+19, _health_bar_width, _health_bar_height, false);
+	draw_agent_bar(_ally, _aligned_x, _text_y+23, _health_bar_width, _health_bar_height, false, "MP");
+
+
 }
 	
 	

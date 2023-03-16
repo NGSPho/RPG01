@@ -1,3 +1,3 @@
-OBJ_NPC_ABSTRACT.visible = true
-OBJ_PLAYER.visible = true;
+
+agents_display();
 room_goto(OBJ_PLAYER.current_room)

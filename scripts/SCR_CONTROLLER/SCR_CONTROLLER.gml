@@ -22,16 +22,9 @@ function initialize_global_variables() {
 	populate_battle_data()
 	log("Battle map loaded");*/
 	
-	global.team = [OBJ_FIGHTER_PLAYER];
+	global.MAX_TEAM_MEMBER = 4;
+	global.team = load_team();
 	log("GLOBAL TEAM :", global.team);
-	
-	// Instanciate playable characters
-	
-	for (var i=0; i<array_length(global.team); i++) {
-		var _teammate = instance_create_depth(0, 0, 0, global.team[i])
-		with(_teammate) { visible = false }
-		log("Created teammate " + object_get_name(_teammate.object_index));
-	}
 		
 	global.map_text = load_text()
 	global.map_choice = load_option()
@@ -42,16 +35,13 @@ function initialize_global_variables() {
 }
 
 function load_team() {
-	var _team = [OBJ_PLAYER]
-	log("GLOBAL TEAM :", global.team);
-	
-	// Instanciate playable characters
-	
-	for (var i=0; i<array_length(global.team); i++) {
-		var _teammate = instance_create_depth(0, 0, 0, global.team[i])
+	var _team = [OBJ_FIGHTER_PLAYER, OBJ_FIGHTER_ASTERIX, OBJ_FIGHTER_OBELIX, OBJ_FIGHTER_DENEA];
+	for (var i=0; i<array_length(_team); i++) {
+		var _teammate = instance_create_depth(0, 0, 0, _team[i])
 		with(_teammate) { visible = false }
 		log("Created teammate " + object_get_name(_teammate.object_index));
 	}
+	return _team;
 }
 
 
@@ -118,6 +108,22 @@ function populate_battle_data() {
 		DEF: 1
 	}
 	ds_map_add(global.battle_stats, "main_character", main_character)
+}
+
+/// Hide agents on the map (when going to menu rooms for instance)
+function agents_hide() {
+	if instance_exists(OBJ_NPC_ABSTRACT)	
+		OBJ_NPC_ABSTRACT.visible = false
+	if instance_exists(OBJ_PLAYER)
+		OBJ_PLAYER.visible = false;
+}
+
+/// Display agents on the map
+function agents_display() {
+	if instance_exists(OBJ_NPC_ABSTRACT)	
+		OBJ_NPC_ABSTRACT.visible = true
+	if instance_exists(OBJ_PLAYER)
+		OBJ_PLAYER.visible = true;
 }
 
 

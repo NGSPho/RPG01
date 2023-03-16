@@ -1,16 +1,15 @@
 var _accept_key = keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter)
-textbox_x = camera_get_view_x(view_camera[0]);
-textbox_y = camera_get_view_y(view_camera[0]) + 160;
 
 
 // setup
 if setup == false && array_length(text_data_array) == 0 {
+	
 	log("Setup text box");
 	draw_set_font(font)
 	
 	// -- apply constraints to filter out the pages -- //
 	var _unfiltered_text_data_array = event_get(text_id, EVENT_TYPE.TEXT);
-	debug("Unfiltered ", _unfiltered_text_data_array);
+	//debug("Unfiltered ", _unfiltered_text_data_array);
 	for(var p = 0 ; p < array_length(_unfiltered_text_data_array) ; p++ ) {
 		var _text_data = _unfiltered_text_data_array[p];
 	
@@ -22,7 +21,7 @@ if setup == false && array_length(text_data_array) == 0 {
 		} 
 	}
 	
-	debug("Filtered ", text_data_array);
+	//debug("Filtered ", text_data_array);
 	for(var p = 0 ; p < array_length(text_data_array) ; p++ ) {
 		var _txt_data = text_data_array[p]
 			_txt_data.text_length = string_length(_txt_data.text);	// TODO remove ? is it really useful	  store HOW MANY CHARS ARE ON EACH PAGE	
