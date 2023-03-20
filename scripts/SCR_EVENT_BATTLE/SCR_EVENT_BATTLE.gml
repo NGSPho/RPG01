@@ -118,29 +118,46 @@ function create_battle_animation(_actions) {
 /// Compute battle outcome, that is to say, status, damages, etc
 function compute_damage(_action) {
 	var _origin = _action.origin;
-	var _action_name = _action.action;
+	var _action_type = _action.type;
 	var _target = _action.target;
 	//log("Action is o:", _origin, " n:", _action_name, " t:", _target)
 	//----  compute damage ----//
-	if is_targetted_attack(_action_name) {
-		var _dmg = -1*_origin.ATK / _target.DEF
-		_action.dmg = _dmg
+	switch(_action.type) {
+		case ACTION_TYPE.ATTACK: handle_damage_action_type_attack(_action); break;
+		case ACTION_TYPE.ITEM: handle_damage_action_type_item(_action); break;
+		case ACTION_TYPE.MISC: debug("TODO"); break;
+		default: throw("Action type not handled");
 	}
 }
 
+function handle_damage_action_type_attack(_action) {
+	if is_targetted_attack(_action) {
+		var _dmg = -1*_action.origin.ATK / _action.target.DEF
+		_action.dmg = _dmg;
+	}
+}
 
+function handle_damage_action_type_item(_action) {
+	var _item =  _action.item_stack.item;
+	if is_targetted_attack(_action) {
+		if _item.effect.attribute == ATTRIBUTE.HP {
+			var _dmg = _item.effect.value;
+			_action.dmg = _dmg;
+		}
+	}
+}
 function apply_damage(_action) {
 	var _origin = _action.origin;
-	var _action_name = _action.action;
-	if !is_targetted_attack(_action_name) return;
+	var _action_type = _action.type;
+	if !is_targetted_attack(_action) return;
 	var _target = _action.target;
 	if _origin.HP <= 0 // TODO remove security
 		return;
 	if _target.HP > 0 { 
-		var _dmg = _action.dmg
-		_target.HP += _dmg;
+		var _dmg = _action.dmg;
+		_target.HP = max(_target.HP + _dmg, 0);
 		_origin.HP = max(0,_origin.HP-1);
-		_origin.M = max(0,_origin.MP-1);
+		_origin.MP = max(0,_origin.MP-1);
 		log("Target ", object_get_name(_target.object_index), " HP turned to ", _target.HP);
 	} else {
 		 debug("TODO need to redirect attack on another monster");
@@ -149,31 +166,31 @@ function apply_damage(_action) {
 
 
 /// Retrieve animation sprite from action
-function retrieve_sprite_from_action(_action_name) {
-	switch(_action_name) {
-		case("Attack"): return SPR_BATTLE_ANIMATION_ATTACK_SLASH;
-		case("Wait"): return noone;
-		case("Laugh"): return noone;
+function retrieve_sprite_from_action(_action_type) {
+	switch(_action_type) {
+		case ACTION_TYPE.ATTACK: return SPR_BATTLE_ANIMATION_ATTACK_SLASH;
+		case ACTION_TYPE.ITEM: return SPR_BATTLE_ANIMATION_ATTACK_HOLY_01;
+		case ACTION_TYPE.MISC: return noone;
 		default : throw("Unknown attack name.");
 	}
 }
 
 /// Retrieve animation sprite from action name
-function retrieve_audio_from_action(_action_name) {
-	switch(_action_name) {
-		case("Attack"): return SOUND_EFFECT_BATTLE_SLASH;
-		case("Wait"): return noone;
-		case("Laugh"): return noone;
+function retrieve_audio_from_action(_action_type) {
+	switch(_action_type) {
+		case ACTION_TYPE.ATTACK: return SOUND_EFFECT_BATTLE_SLASH;
+		case ACTION_TYPE.ITEM: return SOUND_EFFECT_MENU_ITEM_HEAL;
+		case ACTION_TYPE.MISC: return noone;
 		default : throw("Unknown attack name.");
 	}
 }
 
 /// Check if the action is a targetted attach or not (if index 2 has a target)
 /// @param _action_name The label of the action
-function is_targetted_attack(_action_name) {
-	return array_contains(["Attack"], _action_name);
+function is_targetted_attack(_action) {
+	return _action.target != noone;
 }
-	
+
 // ------------------------------ Victory menu ------------------------------------- //
 /// Create the experience menu and apply the experience gain
 ///@param _ally The fighters that where in the fight
@@ -198,7 +215,7 @@ function distribute_XP(_allies, _enemies) {
 		var _gained_XP = floor(_total_XP/_nb_players);
 		var _str = _allies[_index].label+" gagne "+string(_gained_XP)+" points d'experience."
 		
-		text_data_builder_append(_tdb, _str, noone)
+		text_data_builder_append(_tdb, _str, noone, noone)
 		
 		apply_XP(_allies[_index], _gained_XP, _tdb);
 		//gains[_loot_index] = [_gained_XP];
@@ -219,7 +236,7 @@ function apply_XP(_ally, _XP, _tdb) {
 		_ally.XP -= _XP_required_to_level_up;
 		var _str = _ally.label + " levels up to level " + string(_ally.LVL);
 		log(_str);
-		text_data_builder_append(_tdb, _str, SOUND_EFFECT_BATTLE_LEVEL_UP)
+		text_data_builder_append(_tdb, _str, SOUND_EFFECT_BATTLE_LEVEL_UP, noone)
 	}
 	// TODO import XP sheets
 }
@@ -228,7 +245,7 @@ function apply_XP(_ally, _XP, _tdb) {
 
 // battles file BATTLE_ID	TYPE	MONSTERS	EVENT_ID	EVENT_TYPE
 function load_battle() {
-	var _csv = load_csv(global.csv_folder+"battle.csv")
+	var _csv = load_csv(global.event_folder+"battle.csv")
 	var _height = ds_grid_height(_csv);
 	var _battle_map = ds_map_create()
 	
@@ -258,12 +275,7 @@ function load_battle() {
 		}
 		
 		//log("Add battle data " + string(_battle_data))
-		
-		if !ds_map_exists(_battle_map, _battle_id) 
-			ds_map_add(_battle_map, _battle_id, _battle_data)
-		else {
-			throw("Duplicate battle id in csv file");
-		}
+		item_map_build(_battle_map, _battle_id, _battle_data)
 	}
 	ds_grid_destroy(_csv);
 	return _battle_map;

@@ -26,19 +26,15 @@ function play_join(_join_id) {
 	// Create the textbox
 	var _tdb = text_data_builder_create();
 	var _str = (_new_member.label+" rejoint l'equipe !")
-	text_data_builder_append(_tdb, _str, noone)
+	text_data_builder_append(_tdb, _str, noone, noone)
 	create_textbox(_tdb);
 	
 	
 }
 
-function team_member_create(_new_member) {
-}
-
-
 // battles file BATTLE_ID	TYPE	MONSTERS	EVENT_ID	EVENT_TYPE
 function load_join() {
-	var _csv = load_csv(global.csv_folder+"join.csv")
+	var _csv = load_csv(global.event_folder+"join.csv")
 	var _height = ds_grid_height(_csv);
 	var _join_map = ds_map_create()
 	
@@ -66,12 +62,7 @@ function load_join() {
 		}
 		
 		log("Add join data " + string(_join_data))
-		
-		if !ds_map_exists(_join_map, _join_id) 
-			ds_map_add(_join_map, _join_id, _join_data)
-		else {
-			throw("Duplicate battle id in csv file");
-		}
+		item_map_build(_join_map, _join_id, _join_data)
 	}
 	ds_grid_destroy(_csv);
 	return _join_map;

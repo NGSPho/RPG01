@@ -3,8 +3,7 @@
 // TODO replace when functional arrays are released
 // Get the longest string from a string array
 // args : array, Optional integer
-function get_max_width_from_string_array(tab)
-{
+function get_max_width_from_string_array(tab) {
 	var max_width = 0;
 	for (var i = 0 ; i < array_length(tab) ; i++) {
 		var str_width = string_width(tab[i])
@@ -13,6 +12,21 @@ function get_max_width_from_string_array(tab)
 	return max_width;
 }
 
+function get_total_width_from_string_array(tab) {
+	var _sum = 0;
+	for (var i = 0 ; i < array_length(tab) ; i++) {
+		_sum += string_width(tab[i])
+	}
+	return _sum;
+}
+
+function get_total_height_from_string_array(tab) {
+	var _sum = 0;
+	for (var i = 0 ; i < array_length(tab) ; i++) {
+		_sum += string_height(tab[i])
+	}
+	return _sum;
+}
 // --------------------- LOGS ---------------------- //
 // print(variables or strings)
 function log() 
@@ -216,6 +230,26 @@ function draw_sprite_simplified_2(_sprite, _x, _y, _width, _height, _subimage = 
 	draw_sprite_ext(_sprite, _subimage,  _x, _y, _scale_x, _scale_y , 0, c_white, 1)
 }
 
+// --------------------- DS MAPS -------------------------- ///// desc map object according to id
+function item_list_map_build(_ds_map, _item_id, _item) {
+	if !ds_map_exists(_ds_map, _item_id) 
+		ds_map_add(_ds_map, _item_id, [_item])
+	else {
+		var _data_arr = _ds_map[? _item_id]
+		array_push(_data_arr, _item)
+	}
+}
+
+
+function item_map_build(_ds_map, _item_id, _item) {
+	if !ds_map_exists(_ds_map, _item_id) 
+		ds_map_add(_ds_map, _item_id, _item)
+	else {
+		throw("Duplicate id in csv file");
+	}
+}
+
+// ------------------------------------------------------------ //
 
 function TODO() {
 	throw("Not implemented yet!");

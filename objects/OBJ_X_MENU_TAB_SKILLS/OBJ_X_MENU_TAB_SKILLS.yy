@@ -14,8 +14,8 @@
     "path": "folders/Objects/Menu/Game menu.yy",
   },
   "parentObjectId": {
-    "name": "OBJ_X_MENU_TAB",
-    "path": "objects/OBJ_X_MENU_TAB/OBJ_X_MENU_TAB.yy",
+    "name": "OBJ_X_MENU_TAB_ABSTRACT",
+    "path": "objects/OBJ_X_MENU_TAB_ABSTRACT/OBJ_X_MENU_TAB_ABSTRACT.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

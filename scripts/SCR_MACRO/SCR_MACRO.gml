@@ -3,6 +3,7 @@
 #macro LEFT 2
 #macro DOWN 3
 
+#macro INVENTORY_SIZE 3
 
 enum EVENT_TYPE {
 	BATTLE,

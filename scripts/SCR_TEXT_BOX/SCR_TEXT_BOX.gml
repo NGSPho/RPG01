@@ -13,6 +13,7 @@ function play_text(_text_id, _caller = noone) {
 /// Create a text box with input strings
 /// @param text_arr An array of string
 function create_textbox(_text_arr) {
+	debug("Create floating textbox");
 	// add text to map
 	var _text_id = "tmp"
 	var _page_number = array_length(_text_arr)
@@ -41,8 +42,9 @@ function text_data_create() {
 		sound : noone,
 		portrait : noone,
 		sprite : SPR_TEXT_BOX,
-		constraint : noone,
-		constraint_value : noone,
+		constraint : noone, // attribute, operator, value
+		//constraint_value : noone, // check for side effects
+		effect : noone, // attribute, value, function
 			
 		// dynamic fields
 		text_length : noone,
@@ -73,10 +75,18 @@ function text_data_builder_create() {
 /// @param _tdb The builder
 /// @param _string The string to append
 /// @param _snd
-function text_data_builder_append(_tdb, _string, _snd) {
+/// @param _effect
+function text_data_builder_append(_tdb, _string, _snd, _effect) {
 	var _text_data = text_data_create();
 	_text_data.text = _string;
 	_text_data.sound = _snd
+	_text_data.effect = _effect
 	array_push(_tdb, _text_data)
 	return _tdb
+}
+
+function option_builder_append(_tdb, options) {
+	var _id_option = "tmp_yes";
+	var _id_yes = "tmp_yes";
+	var _id_yes = "tmp_yes";
 }

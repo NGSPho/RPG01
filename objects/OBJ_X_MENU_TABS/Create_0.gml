@@ -10,6 +10,8 @@ tab_pos = 0;
 box_sprite = SPR_X_MENU;
 box_sprite_off = SPR_X_MENU_OFF;
 
+audio_play_sound(SOUND_EFFECT_MENU_OPEN, 1, -1);
+
 function open_characteristics_menu() {
 }
 
@@ -22,7 +24,7 @@ function open_generic_menu(_obj_tab_menu) {
 }
 
 function close_tabs() {
-	instance_destroy(OBJ_X_MENU_TAB);
+	instance_destroy(OBJ_X_MENU_TAB_ABSTRACT);
 }
 
 function menu_tabs_label(_tab) {

@@ -1,8 +1,8 @@
-global.csv_folder = "events/";
+global.event_folder = "events/";
 /// Load text files
 // text file TEXT_ID	TYPE	TEXT	CHARACTER	EXPRESSION	SIDE	SOUND	CONSRAINT
 function load_text() {
-	var _file_name = string(global.csv_folder)+"text.csv"
+	var _file_name = string(global.event_folder)+"text.csv"
 	log("csv file is ", _file_name);
 	var _csv = load_csv(_file_name);
 	var _height = ds_grid_height(_csv);
@@ -21,6 +21,7 @@ function load_text() {
 		_text_data.side = string_return_noone_if_empty(_csv[# 5, i])
 		_text_data.sound = string_return_noone_if_empty(_csv[# 6, i])
 		_text_data.constraint = string_return_noone_if_empty(_csv[# 7, i])
+		_text_data.effect = string_return_noone_if_empty(_csv[# 8, i])
 		
 		if _text_data.portrait == noone && _text_data.character != noone {
 			if _text_data.expression == noone _text_data.expression = "NEUTRAL";
@@ -38,17 +39,15 @@ function load_text() {
 				value : _parse_result.constraint_value
 			}
 		}
+		if _text_data.effect != noone {
+			var _parse_result = parse_constraint_str(_text_data.effect);
+			TODO();
+		}
 		if _text_data.constraint != noone {
 			debug("Adding constraint ", _text_data.constraint, " to text id ", _text_data.text_id,":", _text_data.text);
 		}
 		//log("Add text data ", _text_data)
-		if !ds_map_exists(_text_map, _text_id) {
-			debug("text id ", _text_id, " does not exist");
-			ds_map_add(_text_map, _text_id, [_text_data])
-		} else {
-			var _data_arr = _text_map[? _text_id]
-			array_push(_data_arr, _text_data)
-		}
+		item_list_map_build(_text_map, _text_id, _text_data);
 	}
 	
 	ds_grid_destroy(_csv);
@@ -58,7 +57,7 @@ function load_text() {
 
 // choices file CHOICE_ID	CHOICE_SUB_ID	CHOICE_TEXT	TEXT_ID
 function load_option() {
-	var _csv = load_csv(global.csv_folder+"option.csv")
+	var _csv = load_csv(global.event_folder+"option.csv")
 	var _height = ds_grid_height(_csv);
 	var _choice_map = ds_map_create()
 	
@@ -71,14 +70,7 @@ function load_option() {
 			text_id : _csv[# 3, i],
 		}
 		
-		//log("Add choice data " + string(_choice_data))
-		
-		if !ds_map_exists(_choice_map, _choice_id) 
-			ds_map_add(_choice_map, _choice_id, [_choice_data])
-		else {
-			var _data_arr = _choice_map[? _choice_id]
-			array_push(_data_arr, _choice_data)
-		}
+		item_list_map_build(_choice_map, _choice_id, _choice_data);
 	}
 	ds_grid_destroy(_csv);
 	return _choice_map;

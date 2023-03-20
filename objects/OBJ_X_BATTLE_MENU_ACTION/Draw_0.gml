@@ -89,7 +89,7 @@ for (var _pos_y=0; _pos_y<array_length(actions); _pos_y++;) {
 }
 
 // -------------------- Display enemy selecion ----------------------------- //
-if select_target_mode == true {
+if mode == ACTION_MENU_MODE.ATTACK_TARGET_SELECTION || mode == ACTION_MENU_MODE.ITEM_TARGET_SELECTION {
 	var _enemy_box_x = camera_get_view_x(view_camera[0]) + 160;
 	var _enemy_box_y = camera_get_view_y(view_camera[0]) + 160;
 	var _enemy_box_w = 120;
@@ -106,4 +106,38 @@ if select_target_mode == true {
 	draw_sprite_ext(_arrow_spr, 0, _enemy_x + 10, 150, 1, 1, 180, c_white, 1)
 
 }
+if mode == ACTION_MENU_MODE.ITEM_SELECTION || mode == ACTION_MENU_MODE.ITEM_TARGET_SELECTION {
+	var _sorted_inventory = global.team[current_ally_turn_index].battle_inventory; //TODO sort inventory
+	var _item_x = _action_menu_x + 10;
+	// draw the items over action menu
+	draw_sprite_ext(_battle_spr, 0, _action_menu_x, _action_menu_y, _scale_x, _scale_y, 0, c_white, 1)
+	for (i=item_display_pos; i<min(item_display_pos+item_display_max, array_length(_sorted_inventory)); i++) {
+		var _stack = _sorted_inventory[i];
+		var _item = _stack.item;
+		var _text = _item.label;
+		var _item_y = _action_menu_y + 10 + 15 * (i-item_display_pos);
+		draw_text_simplified(_item_x, _item_y, _text);
+		
+	draw_set_halign(fa_right);
+	
+	draw_text_simplified(_action_menu_x+_action_menu_width-10, _item_y, _stack.quantity);
+			
+	draw_set_halign(fa_left);
+		
+		if item_pos == i {
+			var _spr = SPR_BATTLE_MENU_ARROW
+			var _arrow_spr_height = sprite_get_height(_spr)
+			var _arrow_spr_width = sprite_get_width(_spr)
+			draw_sprite_ext(_spr, 0, _item_x - 10, _item_y - 1, 0.5, 0.5, 0, c_white, 1) // TODO add anim on arrow
+		}
+		if item_display_pos > 0 {
+			draw_sprite_simplified(SPR_BATTLE_ENEMY_ARROW_UP, _action_menu_x + _action_menu_width/2, _action_menu_y, 0.5, 0.5)
+		}
+		if item_display_pos+item_display_max < array_length(_sorted_inventory) {
+			draw_sprite_simplified(SPR_BATTLE_ENEMY_ARROW, _action_menu_x + _action_menu_width/2, _action_menu_y + _action_menu_height - sprite_get_height(SPR_BATTLE_ENEMY_ARROW)/2, 0.5, 0.5)
+		}
+	}		
+}
+
+
 

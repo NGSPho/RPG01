@@ -1,0 +1,5 @@
+"ID","LABEL","DESCRIPTION","sprite","EFFECTS","TYPE","USE"
+"apple","Apple","A sweet apple. Nothing more.","SPR_ITEM_APPLE","HP+1","HEAL","BOTH"
+"lemon","Lemon","Acid stuff. Don't bite.","SPR_ITEM_LEMON","ATK+2","HEAL","BOTH"
+"feather","Feather","Soft feather. Warps you back home.","SPR_ITEM_FEATHER","FUNCTION:WARP_HOME","MISC","MAP"
+"bomb","Bomb","Man made bomb for the haters.","SPR_ITEM_BOMB","HP-2","ATTACK","BATTLE"

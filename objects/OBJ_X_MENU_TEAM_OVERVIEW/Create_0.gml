@@ -76,9 +76,24 @@ function display_characters() {
 		if i == pos_char {
 			var _arrow_offset_y = _character_section_offset_y + _character_section_height/2;
 			var _arrow_offset_x = _box_offset_x + _box_width;
-			draw_sprite_simplified_2(SPR_BATTLE_MENU_ARROW, _arrow_offset_x,_arrow_offset_y, 10, 10)
+			draw_sprite_simplified_2(SPR_BATTLE_MENU_OVERVIEW_ARROW, _arrow_offset_x-1,_arrow_offset_y, 10, 10)
 		
 
 		}
 	}
+}
+
+function menu_reset(_menu_object) {
+	if instance_exists(_menu_object) with(_menu_object) menu_reset();
+		
+}
+
+function check_focus() {
+	var result = !has_focus(OBJ_X_MENU_TAB_ITEMS);
+	return result;
+}
+
+function has_focus(_menu_object) {
+	if !instance_exists(_menu_object) return false;
+	with(_menu_object) return has_focus();
 }

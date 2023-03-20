@@ -22,14 +22,17 @@ function initialize_global_variables() {
 	populate_battle_data()
 	log("Battle map loaded");*/
 	
-	global.MAX_TEAM_MEMBER = 4;
-	global.team = load_team();
-	log("GLOBAL TEAM :", global.team);
-		
 	global.map_text = load_text()
 	global.map_choice = load_option()
 	global.map_battle = load_battle()
 	global.map_join = load_join()
+	global.map_item = load_item()
+	
+	
+	global.MAX_TEAM_MEMBER = 4;
+	global.team = load_team();
+	log("GLOBAL TEAM :", global.team);
+		
 	
 	
 }
